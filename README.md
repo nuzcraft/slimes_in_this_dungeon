@@ -26,5 +26,7 @@ The game will be relatively short, with only 4 actual dungeon levels. Ideally, e
 9. 4th Level -> escape with the crystals! This level is a grab bag of all slimes and the player has all abilities. When the player reaches the stairs, the game is over!
 
 ## Changelog
+### 2020.02.06 Game Flow
+Today, I started working on the game flow. Basically, the player will go through a couple different dungeon levels collection crystals. The crystals will grant special abilities. After collecting all 3, they have to escape. There's a level selector that sits between the levels.
 ### 2020.02.04 Starting the Design
 This will be my first attempt at a 7DRL and I'm terrified. I've tried a couple other game jams in the past (GM48) with little success, mostly due to a lack of time, but also due to a lack of experience. This README will comprise all the normal README garbage, but will also be my design document as I begin planning my week of development. I'm very excited! My idea for a game is _really simple_ and I think thats the best way to go for my first try. I'll be coming up with a pseudo-timeline as well as plan extra features in case things go better than expected (they won't).
