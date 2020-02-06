@@ -26,7 +26,7 @@ The game will be relatively short, with only 4 actual dungeon levels. Ideally, e
 9. 4th Level -> escape with the crystals! This level is a grab bag of all slimes and the player has all abilities. When the player reaches the stairs, the game is over!
 #### Decisions / Specifics
 There are a number of design elements for the game that are objective or replaceable or fudgy. These decisions should help lead the design, but can be changed at any time.
-* The map itself should be relatively small, like 9*13 or 11*15 or something.
+* The map itself should be relatively small, like 9x13 or 11x15 or something.
 * Related to above, I want the map to be more rectanular than square, with more space to move horizontally than vertically
 * UI elements (like score, crystal indicators, spell availability) should all be at the bottom of the screen. This way they are a) unintrusive and b) different from the other game I made recently.
 * Dungeon generation should use Binary Space Partitioning (or similar) (if possible). I like the idea of rooms filling the entire space with only walls and doorways.
