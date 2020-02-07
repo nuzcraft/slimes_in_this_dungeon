@@ -35,8 +35,49 @@ There are a number of design elements for the game that are objective or replace
 * Starter colors are Cyan, Magenta, Yellow; blends are Red, Blue, Green. Each have their own specific themes.
 * Sprites will be from Quale, recolored by me.
 * The majority of the game will be written in javascript. I will be using my previous project (Row Jam Brough) and @humbit's JS Broughlike tutorial as a jumping off point for the majority of my code.
+* movement will be orthoganol (no diagonals)
+* special abilities will be activated by the number keys
+* slimes will have simple bump to attack mechanics. Their special abilities will have a cooldown time
+* slime ai will be very simple (move towards player) stretch goal will be to have more sophisticated movement patterns
+* adding a small amount of animation will be a stretch goal
+##### Colors and abilities
+###### Cyan
+Cyan enemies have wind gusts or force push as an ability
+* 3 turn cooldown?
+* The cyan level will have spikes on the floor that the player will need to avoid (and not be force pushed into)
+* Once the Cyan crystal is collected, the player gets force push
+###### Magenta
+Magenta enemies will throw poison bombs that explode a turn or two after they land. The poison cloud lingers for a turn or 2 before disappearing.
+* 3 turn cooldown?
+* The magenta level will have permanent poison clouds all around
+* once the magenta crystal is collected, the player gets to throw a poison bomb at the nearest enemy. Bonus points if player bombs aren't harmful to the player.
+###### Yellow
+Yellow enemies can zap along the x or y axis.
+* They must come to a full stop, charge up for a turn
+* 5 turn cooldown?
+* Electric tripwires on the floor? that activate and deactivate on a set timer
+* add additinal pillars to the rooms to block bolts
+* the player ability will be to zap in a direction
+###### Blue
+Enemies have a shield that blocks a single attack.
+Blue is achieved by mixing Magenta and Cyan
+* the player ability is a shield. I'm not sure if this is a permanent or regenerating shield, or if they have to push the button for it.
+###### Red
+Enemies will throw bombs. 2 Ideas
+* bombs blow up in a large x or + pattern
+* or bombs that leave fire spots that dwindle after some time
+* add periodic gouts of fire from the walls or floor
+* 3 turn cooldown.
+Red is achieved by mixing Magenta and Yellow
+###### Green
+green enemies can attack 2 spaces away, but not through creatures or walls.
+* this could be implemented by letting them move twice sometimes
+* 3 turn cooldown.
+* add speedy and slow spaces to the floor
 
 ## Changelog
+### 2020.02.07 Color Specifics
+I defined some the the specifics to the different colors I want to use.
 ### 2020.02.06 Game Flow
 Today, I started working on the game flow. Basically, the player will go through a couple different dungeon levels collection crystals. The crystals will grant special abilities. After collecting all 3, they have to escape. There's a level selector that sits between the levels. I also added some Decisions that can be used to help drive design in the direction I'm thinking.
 ### 2020.02.04 Starting the Design
