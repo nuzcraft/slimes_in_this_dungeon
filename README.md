@@ -13,17 +13,13 @@ The game will only be considered complete when:
 * the color crystals grant special abilities when gathered
 * the player can exit once 3 color crystals have been gathered
 #### Flow
-The game will be relatively short, with only 4 actual dungeon levels. Ideally, each of the 4 levels will be slightly different every time you play.
+The game will be relatively short, with only a few actual dungeon levels. Ideally, each of the levels will be slightly different every time you play.
 1. Title Screen -> Press any key to continue
 2. _Optional_ Introduction. This can likely be lumped in with the Title Screen, but should be someone telling you why you need to go into the dungeon in the first place.
-3. Level Select -> Three downward staircases lead to 3 different levels of the dungeon. The player can choose which to go down. Staircases are color-coded: Yellow, Magenta, Cyan. No slimes? 1 or 2? _Optional_ give the player instructions about how to bump and defeat slimes.
-4. 1st Level -> based on the staircase chosen, the player navigates a new level. Slimes here have abilities that the player will have to learn to avoid. There will be treasure to collect (for points) and a crystal to pick up. Once the crystal is picked up, the level ends.
-4. _Optional_ after gathering a crystal, display a message letting the player know that slimes have been upgraded
-5. Level Select -> the previous staircase is now gone (or blocked off/greyed out) and the player chooses a new one.
-6. 2nd Level -> based on the staircase chose, the player navigates a new level. Slimes will have abilities from this level _and_ a new mix of this level and the previous. The player will have a new ability as well. Once the crystal is picked up, the level ends.
-7. Level Select -> the player must choose the final staircase.
-8. 3rd Level -> the player will navigate a new level from the final color. Slimes will have abilities from this level and a mix of this one and the previous. The player will have 2 new abilities (one from the previous level and one a mix of both previous levels). Once the crystal is picked up, the level ends.
-9. 4th Level -> escape with the crystals! This level is a grab bag of all slimes and the player has all abilities. When the player reaches the stairs, the game is over!
+4. 1st Level -> level is built with a random theme (color), the player navigates a new level. Slimes here have abilities that the player will have to learn to avoid. There will be treasure to collect (for points) and a crystal to pick up. Once the crystal is picked up, the player gets a new ability. The level ends when the play steps on the stairs after collecting the crystal.
+4. _Optional_ after gathering a crystal, display a message letting the player know that slimes of that color will no appear later in the dungeon
+6. 2nd - 6th Level -> another random theme, the player navigates a new level. Slimes will have abilities from this level. And new slimes from the previous level have a chance of spawning in. Once the crystal is picked up, the player gets a new ability. The level ends when the player steps on the stairs after collecting the crystal.
+9. 7th Level -> escape with the crystals! This level is a grab bag of all slimes and the player has all abilities. When the player reaches the stairs, the game is over!
 #### Decisions / Specifics
 There are a number of design elements for the game that are objective or replaceable or fudgy. These decisions should help lead the design, but can be changed at any time.
 * The map itself should be relatively small, like 9x13 or 11x15 or something.
@@ -40,6 +36,7 @@ There are a number of design elements for the game that are objective or replace
 * slimes will have simple bump to attack mechanics. Their special abilities will have a cooldown time
 * slime ai will be very simple (move towards player) stretch goal will be to have more sophisticated movement patterns
 * adding a small amount of animation will be a stretch goal
+* adding scores and high scores will be a stretch goal as well
 ##### Colors and abilities
 ###### Cyan
 Cyan enemies have wind gusts or force push as an ability
@@ -71,11 +68,35 @@ Enemies will throw bombs. 2 Ideas
 Red is achieved by mixing Magenta and Yellow
 ###### Green
 green enemies can attack 2 spaces away, but not through creatures or walls.
-* this could be implemented by letting them move twice sometimes
+* this could be implemented by letting them move twice sometimes / giving them a free turn
 * 3 turn cooldown.
-* add speedy and slow spaces to the floor
+* add speedy and slow spaces to the floor / spaces that make you miss a turn or give you an extra turn
+
+## Project Plan
+### Set up Architecture
+This includes creating all the initial files and folders necessary to get started coding.
+### Create Super-Basic Mockup
+Keep it simple! We only need the basics here! I only want to see the basic game flow and player movement. This will include building an empty level to start playing with.
+### Super-Basic Enemies
+Again, keep it simple! Start by creating the most basic of slime enemies. This will also include code to defeat enemies as well as code for them to defeat the player.
+### New Levels
+Create the stairs that will lead to new levels. After X levels, create stairs to end the game.
+### Crystal Creation
+Create the crystals to be collected. Collecting them should unlock the stairs for that level.
+### BSP Level Gen
+Update the level generation code to use BSP to create rooms and doorways.
+### Update Player, Enemy, Crystal, and Stair Placement
+Change the code so that these objects are placed in rooms as opposed to just looking at the floor as a whole.
+### MAGENTAAAA
+Aight, now we get into the specifics. Build out the special ability for Magenta, both for enemies as well as the player. Create the poison clouds and generate them in the level. Update the level generator to do Magenta-specific generation.
+### CYANNNNN
+Now, do the same for Cyan. Additionally, add code so that the each level is randomized for the order that floors are visited in and make it so that enemies from previous levels can spawn in on subsequent levels.
+### YELLOOWWW
+Now, do the same for Yellow.
 
 ## Changelog
+### 2020.02.10 Design Changes
+Over the weekend, I was thinking about this and decided that I'm going to move away from the level select idea. I think it adds unnecessary tedium for very little gain. The original idea was that you could define your run by choosing your path, but the reality is that the game isn't long enough for that. Instead, levels will come out randomly and new levels will be able to spawn enemies from previous levels. I also started setting out task groups for the project plan. This is starting to come together!!
 ### 2020.02.07 Color Specifics
 I defined some the the specifics to the different colors I want to use.
 ### 2020.02.06 Game Flow
