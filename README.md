@@ -4,12 +4,12 @@ This is the code for my 2020 7DRL attempt: There are Slimes in this Dungeon
 ## Design
 ### Title - There are Slimes in this Dungeon
 #### Premise
-The player is tasked with venturing down in to a dungeon filled with slimes to collect the 3 COLOR crystals. Each crystal will grant player new abilities, but will also empower the slimes of the dungeon. Collect all 3 and exit to win.
+The player is tasked with venturing down in to a dungeon filled with slimes to collect 3 COLOR crystals. Each crystal will grant player new abilities, but will also empower the slimes of the dungeon. Collect 3 and exit to win.
 #### Requirements
 The game will only be considered complete when:
 * The player can move around the dungeon
 * the player can fight and defeat multiple types of slimes
-* the player can collect all 3 color crystals
+* the player can collect 3 color crystals
 * the color crystals grant special abilities when gathered
 * the player can exit once 3 color crystals have been gathered
 #### Flow
@@ -73,28 +73,59 @@ green enemies can attack 2 spaces away, but not through creatures or walls.
 * add speedy and slow spaces to the floor / spaces that make you miss a turn or give you an extra turn
 
 ## Project Plan
-### Set up Architecture
+### Base Game
+#### Set up Architecture
 This includes creating all the initial files and folders necessary to get started coding.
-### Create Super-Basic Mockup
+#### Create Super-Basic Mockup
 Keep it simple! We only need the basics here! I only want to see the basic game flow and player movement. This will include building an empty level to start playing with.
-### Super-Basic Enemies
+#### Super-Basic Enemies
 Again, keep it simple! Start by creating the most basic of slime enemies. This will also include code to defeat enemies as well as code for them to defeat the player.
-### New Levels
+#### New Levels
 Create the stairs that will lead to new levels. After X levels, create stairs to end the game.
-### Crystal Creation
+#### Crystal Creation
 Create the crystals to be collected. Collecting them should unlock the stairs for that level.
-### BSP Level Gen
+#### BSP Level Gen
 Update the level generation code to use BSP to create rooms and doorways.
-### Update Player, Enemy, Crystal, and Stair Placement
+#### Update Player, Enemy, Crystal, and Stair Placement
 Change the code so that these objects are placed in rooms as opposed to just looking at the floor as a whole.
-### MAGENTAAAA
+#### MAGENTA
 Aight, now we get into the specifics. Build out the special ability for Magenta, both for enemies as well as the player. Create the poison clouds and generate them in the level. Update the level generator to do Magenta-specific generation.
-### CYANNNNN
+#### CYAN
 Now, do the same for Cyan. Additionally, add code so that the each level is randomized for the order that floors are visited in and make it so that enemies from previous levels can spawn in on subsequent levels.
-### YELLOOWWW
+#### YELLOW
 Now, do the same for Yellow.
+#### Exit Level
+The final level should be able to spawn all types of slimes / all types of traps from previous levels.
+Exiting here should end the game
+
+### Stretch Goals
+If everything above has been completed, we can consider the jam a success. Everything below this is extra and should only be worked on if there is extra time.
+#### Sound Effects and Music
+Add sound effects for attacks, special abilities, movement etc. as well as a background track.
+#### RED
+Create the Red level and integrate it into the game
+#### BLUE
+Create the blue level and integrate it into the game
+#### GREEN
+Create the green level and integrate it into the game
+#### Advanced AI
+Give the slimes a bit more advanced AI. A* pathfinding is a good start.
+#### Title Screen
+Give the title screen a nice background and spruce it up a little bit
+#### Animations
+Give the player and slimes little two-frame animations and maybe attack animations.
+#### Sprite Updates
+Make changes to sprites to make them look nicer or mesh better. This can include creating and adding in new sprites.
+#### Game Over Screen
+Create it / make it better
+#### Instructions Page
+Create an instructions page for people to reference
+#### Story?
+Give the game a bit of story? probably just when the game begins and ends
 
 ## Changelog
+### 2020.02.13 Stretch Goals
+I finished up the required task groups and started looking at what stretch goals would be. The next step is start defining tasks and figuring out how long I think this is gonna take. 
 ### 2020.02.10 Design Changes
 Over the weekend, I was thinking about this and decided that I'm going to move away from the level select idea. I think it adds unnecessary tedium for very little gain. The original idea was that you could define your run by choosing your path, but the reality is that the game isn't long enough for that. Instead, levels will come out randomly and new levels will be able to spawn enemies from previous levels. I also started setting out task groups for the project plan. This is starting to come together!!
 ### 2020.02.07 Color Specifics
