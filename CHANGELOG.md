@@ -1,4 +1,6 @@
 ## Changelog
+### 2020.02.18 Some Smaller Tasks
+I started the process of creating tasks for each of the different sections of the project. This should be very helpful on deciding what to work on at each point of the process. Obviously, these will flow and adjust once the coding has started. I also split the README out into a few different files - readme, changelog, design, and project_plan. Hopefully this will help with organization and allow the readme to be a lot smaller.
 ### 2020.02.13 Stretch Goals
 I finished up the required task groups and started looking at what stretch goals would be. The next step is start defining tasks and figuring out how long I think this is gonna take. 
 ### 2020.02.10 Design Changes
