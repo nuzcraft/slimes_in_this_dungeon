@@ -52,11 +52,17 @@ Create the crystals to be collected. Collecting them should unlock the stairs fo
 * add sprites for each to the spritesheet
 * add code for yellow, magenta, and cyan stairs to tile.js
 * add sprites for yellow, magenta, and cyan stairs to the spritesheet
-* update the level gen so that one crystal and one stairs are generated on each level. 
+* update the level gen so that one crystal and one stairs are generated on each level. This will be the start of the color-specific level generation code
 * update the code so that the player can collect the crystals
 * update the code so that the stairs don't work unless the player has collected the crystal of that color
 #### BSP Level Gen
 Update the level generation code to use BSP to create rooms and doorways.
+* start with the tree and leaf architecture using rooms as the individual leaves. This will require creating some new classes.
+* code the creation of the first leaf, which should be the entire floor
+* code the subdivision of the leaves, recursively, to a specific depth. each subdivision should create 2 sub-leafs and add them to the tree.
+* once all the subdivision is complete, create the rooms on the level (altering the level generation code)
+* add the individual rooms (smallest leaves) to a global room list to be used by future level generation
+* ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves.
 #### Update Player, Enemy, Crystal, and Stair Placement
 Change the code so that these objects are placed in rooms as opposed to just looking at the floor as a whole.
 #### MAGENTA
