@@ -62,18 +62,49 @@ Update the level generation code to use BSP to create rooms and doorways.
 * code the subdivision of the leaves, recursively, to a specific depth. each subdivision should create 2 sub-leafs and add them to the tree.
 * once all the subdivision is complete, create the rooms on the level (altering the level generation code)
 * add the individual rooms (smallest leaves) to a global room list to be used by future level generation
-* ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves.
+* ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves; this could be done using the list of rooms from the previous step
 #### Update Player, Enemy, Crystal, and Stair Placement
 Change the code so that these objects are placed in rooms as opposed to just looking at the floor as a whole.
+* update the level generation so that it loops through each room to generate enemies (and eventually traps)
+* spawn the player, stairs, and crystal in different rooms - it may be worth it to add code so that the player and crystal are spawned on opposite sides of the floor
 #### MAGENTA
 Aight, now we get into the specifics. Build out the special ability for Magenta, both for enemies as well as the player. Create the poison clouds and generate them in the level. Update the level generator to do Magenta-specific generation.
+* add poison cloud sprite to spritesheet
+* create poison cloud as a property of a tile, that will damage a player if stepped on
+* add an optional timer parameter to tiles with poison clouds so that when the timer hits zero, the cloud is destroyed
+* add bomb sprite to the spritesheet
+* code bomb object (similar to an enemy) with a timer. When the timer hits zero, destroy the bomb and spawn a poison cloud with a timer
+* create a function that will calculate the distance between two monsters
+* create a function to find the closest monster
+* update Magenta enemy ai so that they target the player and throw a bomb. This may be a second ai that the enemy can switch to after a certain amount of time. The player must be suitably close to the monster. The monster will target a random open tile next to the player.
+* update level generation to spawn 1-3 poison clouds in a room (must be next to a wall or have no diagonally adjacent walls; this will help keep us from blocking a doorway)
+* create special ability for the player to be able to toss bombs at the nearest enemy as well
 #### CYAN
 Now, do the same for Cyan. Additionally, add code so that the each level is randomized for the order that floors are visited in and make it so that enemies from previous levels can spawn in on subsequent levels.
+* add wind gust to the sprite sheet (may be multiple angles)
+* add floor spike to the sprite sheet
+* create floor spike as a property of a tile that will damage the player if stepped on
+* (BONUS) add a timer so that spikes retract on set intervals
+* code the wind gust as a tile effect that moves the monster in a set direction by one space
+* update cyan enemy ai so that they create these wind gusts on the floor to hinder the player.
+* update the level genration to spawn 1-3 spikes in a room, similarly to how poison clouds were created
+* create special ability for the player to be able to create wind gusts as well
+* update level generation so that level are bulilt in a randomized order
+* adjust code so that enemies from previous levels can spawn into the new
 #### YELLOW
 Now, do the same for Yellow.
+* add horizontal and vertical zaps to the sprite sheet
+* create code to create zaps horizontally or vertically from a source until a solid object (like a wall) is found. This should damage players and enemies
+* update yellow enemy ai so they do this after a turn of charging up
+* update level generation code so that additional pillars are added to individual rooms, to hide behind
+* create a special ability for the player to be able to do this. It may be difficult to determine which direction the bolt should go in.
+* (BONUS) add trip wires that flip on and off.
 #### Exit Level
 The final level should be able to spawn all types of slimes / all types of traps from previous levels.
 Exiting here should end the game
+* adjust the level generator to spawn all types of enemies and traps in smaller quantities in each of the rooms
+* this level will not spawn a crystal, but instead unlocked stairs
+* exiting ends the game!
 
 ### Stretch Goals
 If everything above has been completed, we can consider the jam a success. Everything below this is extra and should only be worked on if there is extra time.
