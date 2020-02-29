@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<title>There are SLIMES in this DUNGEON</title>
+<style>
+	canvas {
+		outline: 1px solid #ffffff;
+	}
+	
+	body {
+		background-color: #000000;
+		text-align: center;
+		margin-top: 30px;
+	}
+</style>
+
+<canvas id="gameCanvas" data-type="game-canvas" ></canvas>
+
+<script src="js/game.js"></script>
+
+<script>
+    tileSize = 64; // number of pixels tall and wide for a tile
+    numTiles_x = 13;
+    numTiles_y = 9;
+    uiHeight = 2; // num of tiles high the ui will be at the bottom of the screen
+
+    spritesheet = new Image();
+    spritesheet.src = 'spritesheet.png';
+    spritesheet.onload = showTitle;
+
+    gamestate = "loading";
+
+    document.querySelector("html").onkeypress = function(e) {
+        if (gameState == "title"){
+            startGame();
+        } else if (gameState == "dead"){
+            showTitle();
+        }
+    }
+
+    setupCanvas();
+
+</script>

@@ -1,4 +1,9 @@
 ## Changelog
+### 2020.02.29 Day 1 begins!
+* 5:30 AM, 7DRL has begun!!
+* 7 WHOLE MINUTES OF WORK before I had to stop to help deal with a kid 😑
+* I made good progress for only ~45 mins of time spent. I've got a working title screen and the start of something good! I grabbed the spritesheet from Row Jam Brough for now, but that will be replaced with a new one when I get there. So exciting!!
+* 45 mins
 ### 2020.02.18 Some Smaller Tasks
 I started the process of creating tasks for each of the different sections of the project. This should be very helpful on deciding what to work on at each point of the process. Obviously, these will flow and adjust once the coding has started. I also split the README out into a few different files - readme, changelog, design, and project_plan. Hopefully this will help with organization and allow the readme to be a lot smaller.
 ### 2020.02.13 Stretch Goals

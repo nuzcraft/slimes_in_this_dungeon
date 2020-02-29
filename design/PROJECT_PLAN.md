@@ -2,16 +2,16 @@
 ### Base Game
 #### Set up Architecture
 This includes creating all the initial files and folders necessary to get started coding.
-* create a 'slimes_in_this_dungeon' folder and link it to a new github repo *DONE*
-* add an 'index.html' file and a 'js' folder to hold javascript files 
-* add enough basic code to 'index.html' so that it can open in a browser 
+* create a 'slimes_in_this_dungeon' folder and link it to a new github repo **DONE**
+* add an 'index.html' file and a 'js' folder to hold javascript files **DONE**
+* add enough basic code to 'index.html' so that it can open in a browser **DONE**
 
 #### Create Super-Basic Mockup
 Keep it simple! We only need the basics here! I only want to see the basic game flow and player movement. This will include building an empty level to start playing with.
-* create 'game.js' in the 'js' folder and add code to set up the canvas. 
-* create function to draw text to the screen in game.js 
-* create basic title screen in game.js 
-* update index.html start at the title screen 
+* create 'game.js' in the 'js' folder and add code to set up the canvas. **DONE**
+* create function to draw text to the screen in game.js **DONE**
+* create basic title screen in game.js **DONE**
+* update index.html start at the title screen **DONE**
 * update index.html to take inputs 
 * update the game so that an input on the title screen will start the game
 * create a spritesheet with basic wall, floor, and player sprites
