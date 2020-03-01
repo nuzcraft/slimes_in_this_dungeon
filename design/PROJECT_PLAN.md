@@ -12,20 +12,19 @@ Keep it simple! We only need the basics here! I only want to see the basic game 
 * create function to draw text to the screen in game.js **DONE**
 * create basic title screen in game.js **DONE**
 * update index.html start at the title screen **DONE**
-* update index.html to take inputs 
-* update the game so that an input on the title screen will start the game
-* create a spritesheet with basic wall, floor, and player sprites
-* create map.js to hold map-related code
-* create tile.js to hold tile related code
-* update tile.js with code for each tile object
-* add basic code to map.js so that a blank floor is created of floor tile objects surrounded by a wall of wall objects
-* add code so that the tile objects are drawn to the screen
-* create monster.js to hold monster and player related code
-* add code to monster.js to create a player
-* add map code to generate a player and place them on the map
-* add code so that the player/monsters can be drawn to the screen
-* update player code so that the player can move around the empty level
-* add code to end the game, probably with an obsure key press (-)
+* update index.html to take inputs **DONE**
+* update the game so that an input on the title screen will start the game **DONE**
+* create a spritesheet with basic wall, floor, and player sprites **DONE**
+* create map.js to hold map-related code **DONE**
+* create tile.js to hold tile related code **DONE**
+* update tile.js with code for each tile object **DONE**
+* add basic code to map.js so that a blank floor is created of floor tile objects surrounded by a wall of wall objects **DONE**
+* add code so that the tile objects are drawn to the screen **DONE**
+* create monster.js to hold monster and player related code **DONE**
+* add code to monster.js to create a player **DONE**
+* add map code to generate a player and place them on the map **DONE**
+* add code so that the player/monsters can be drawn to the screen **DONE**
+* update player code so that the player can move around the empty level **DONE**
 #### Super-Basic Enemies
 Again, keep it simple! Start by creating the most basic of slime enemies. This will also include code to defeat enemies as well as code for them to defeat the player.
 * add actual monsters to the monster.js code

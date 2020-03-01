@@ -6,6 +6,11 @@ const color_cyan = "#00FFFF";
 const color_yellow = "#FFFF00";
 const color_black = "#000000";
 
+// sprite indexes
+const spr_player = 0;
+const spr_wall = 1;
+const spr_floor = 2;
+
 function setupCanvas() {
     // console.log("setUpCanvas started");
     canvas = document.querySelector("canvas");
@@ -42,4 +47,49 @@ function showTitle(){
     drawText("in this                     ", 40, true, 0, canvas.height / 2 - 70, color_white);
     drawText("           DUNGEON", 40, true, 0, canvas.height / 2 - 70, color_magenta);
     drawText("WASD keys to start", 20, true, 0, canvas.height / 2 - 35, color_yellow);
+}
+
+function startGame(){
+    console.log("Starting game.");
+    startLevel();
+    gameState = "running";
+}
+
+function startLevel(){
+    console.log("Starting level.");
+
+    generateLevel();
+
+    player = new Player(randomPassableTile());
+    console.log("Player placed in level.");
+
+}
+
+function draw() {
+    if (gameState == "running" || gameState == "dead"){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for(let i = 0; i < numTiles_x; i++){
+            for (let j = 0; j < numTiles_y; j++){
+                getTile(i, j).draw();
+            }
+        }
+
+        player.draw();
+
+    }
+}
+
+function drawSprite(sprite, x, y) {
+    ctx.drawImage(
+        spritesheet,
+        (sprite % 8) * 16,
+        Math.floor(sprite / 8) * 16,
+        16,
+        16,
+        x * tileSize,
+        y * tileSize,
+        tileSize,
+        tileSize
+    )
 }
