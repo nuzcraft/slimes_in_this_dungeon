@@ -1,4 +1,13 @@
 ## Changelog
+### 2020.03.01 Day 2!
+* 5:00 AM, up early! I was hoping to get some dev time in before the family wakes up, and it worked out!
+* I finished a couple sections of the project plan:
+* added enemies
+* gave them simple ai
+* added combat (one hit kills)
+* added level exits
+* TECHNICALLY it's now a game! It has a start, gameplay with a goal, and an end. There's lots more to do though! The next step is to add the collectible crystals and the gameplay mechanic where they will unlock the stairs.
+* 1.25 hrs
 ### 2020.02.29 Day 1 begins!
 * 5:30 AM, 7DRL has begun!!
 * 7 WHOLE MINUTES OF WORK before I had to stop to help deal with a kid 😑

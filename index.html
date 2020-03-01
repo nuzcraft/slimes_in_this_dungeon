@@ -32,6 +32,13 @@
 
     gamestate = "loading";
 
+    shakeAmount = 0;
+    shakeX = 0;
+    shakeY = 0;
+
+    level = 1;
+    numLevels = 5;
+
     document.querySelector("html").onkeypress = function(e) {
         if (gameState == "title"){
             startGame();

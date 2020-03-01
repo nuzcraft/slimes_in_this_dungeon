@@ -10,6 +10,10 @@ const color_black = "#000000";
 const spr_player = 0;
 const spr_wall = 1;
 const spr_floor = 2;
+const spr_slime = 3;
+const spr_player_dead = 4;
+const spr_exit_level = 5;
+const spr_exit_game = 6;
 
 function setupCanvas() {
     // console.log("setUpCanvas started");
@@ -38,7 +42,7 @@ function drawText(text, size, centered, textX, textY, color){
 
 function showTitle(){
     // console.log("show title started");
-    ctx.fillSytle = 'rgba(75, 75, 75, .85)';
+    ctx.fillStyle = 'rgba(0, 0, 0, .85)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     gameState = "title";
     drawText("There are", 40, true, 0, canvas.height / 2 - 170, color_white);
@@ -51,28 +55,38 @@ function showTitle(){
 
 function startGame(){
     console.log("Starting game.");
+    level = 1;
     startLevel();
     gameState = "running";
 }
 
 function startLevel(){
     console.log("Starting level.");
+    spawnRate = 15;
+    spawnCounter = spawnRate;
 
     generateLevel();
 
     player = new Player(randomPassableTile());
     console.log("Player placed in level.");
 
+    randomPassableTile().replace(Exit);
 }
 
 function draw() {
     if (gameState == "running" || gameState == "dead"){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        screenshake();
+
         for(let i = 0; i < numTiles_x; i++){
             for (let j = 0; j < numTiles_y; j++){
                 getTile(i, j).draw();
             }
+        }
+
+        for(let i = 0; i < monsters.length; i++){
+            monsters[i].draw();
         }
 
         player.draw();
@@ -92,4 +106,33 @@ function drawSprite(sprite, x, y) {
         tileSize,
         tileSize
     )
+}
+
+function tick(){
+    for(let k=monsters.length-1;k>=0;k--){
+		if(!monsters[k].dead){
+			monsters[k].update();
+		}else{
+			monsters.splice(k, 1);
+		}
+    }
+    // player.update();
+    if (player.dead){
+        gameState = "dead";
+    }
+    spawnCounter--;
+    if (spawnCounter <= 0){
+        spawnMonster();
+        spawnCounter = spawnRate;
+        spawnRate --;
+    }
+}
+
+function screenshake(){
+    if(shakeAmount){
+        shakeAmount--;
+    }
+    let shakeAngle = Math.random()*Math.PI*2;
+	shakeX = Math.round(Math.cos(shakeAngle)*shakeAmount);
+	shakeY = Math.round(Math.sin(shakeAngle)*shakeAmount);
 }

@@ -4,6 +4,7 @@ function generateLevel(){
     generateTiles();
 
     // generate monsters here
+    generateMonsters();
 
     // generate other stuff here
 }
@@ -51,4 +52,18 @@ function randomPassableTile(){
         return tile.passable && !tile.monster;
     })
     return tile;
+}
+
+function generateMonsters(){
+    monsters = [];
+    const numMonsters = 3;
+    console.log(numMonsters + " monsters will be generated.");
+    for (let i = 0; i < numMonsters; i++){
+        spawnMonster();
+    }
+}
+
+function spawnMonster(){
+    let monster = new Slime(randomPassableTile());
+    monsters.push(monster);
 }

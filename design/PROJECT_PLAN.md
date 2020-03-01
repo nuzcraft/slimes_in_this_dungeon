@@ -27,24 +27,25 @@ Keep it simple! We only need the basics here! I only want to see the basic game 
 * update player code so that the player can move around the empty level **DONE**
 #### Super-Basic Enemies
 Again, keep it simple! Start by creating the most basic of slime enemies. This will also include code to defeat enemies as well as code for them to defeat the player.
-* add actual monsters to the monster.js code
-* add a new sprite for monsters to the spritesheet
-* update the level gen code to place a few monsters in the level
-* update monster code to have really basic ai
-* update code elsewhere (in game.js?) so that monsters take their turn after the player has moved
-* update monster code so that they can attack the player
-* update player code so that they can attack monsters
-* update both player and monster code to allow them to die
-* when the player dies, go back to the title screen
-* add code so that new monsters are spawned into the level on some sort of timer
+* add actual monsters to the monster.js code **DONE**
+* add a new sprite for monsters to the spritesheet **DONE**
+* update the level gen code to place a few monsters in the level **DONE**
+* update monster code to have really basic ai **DONE**
+* update code elsewhere (in game.js?) so that monsters take their turn after the player has moved **DONE**
+* update monster code so that they can attack the player **DONE**
+* update player code so that they can attack monsters **DONE**
+* update both player and monster code to allow them to die **DONE**
+* when the player dies, go back to the title screen **DONE**
+* add code so that new monsters are spawned into the level on some sort of timer **DONE**
 #### New Levels
 Create the stairs that will lead to new levels. After X levels, create stairs to end the game.
-* add code for stairs (both up and down) to tile.js (they won't be considered a monster)
-* add a sprite for stairs (both up and down) to the spritesheet
-* when the player steps on down stairs, advance to the next level
-* when the player steps on the up stairs, end the game
-* update the level gen to place down stairs in the level until the 5th level. 
-* on the 5th level, create an up stairs to end the game
+* add code for stairs (both up and down) to tile.js (they won't be considered a monster) **DONE**
+* add a sprite for stairs (both up and down) to the spritesheet **DONE**
+* when the player steps on down stairs, advance to the next level **DONE**
+* when the player steps on the up stairs, end the game **DONE**
+* update the level gen to place down stairs in the level until the 5th level.  **DONE**
+* on the 5th level, create an up stairs to end the game **DONE**
+* (ADDITION) add a stun to slimes at the beginning of a level **DONE**
 #### Crystal Creation
 Create the crystals to be collected. Collecting them should unlock the stairs for that level.
 * add code for crystals (magenta, yellow, cyan) to tile.js
