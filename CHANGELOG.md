@@ -4,6 +4,10 @@
 * 7 WHOLE MINUTES OF WORK before I had to stop to help deal with a kid 😑
 * I made good progress for only ~45 mins of time spent. I've got a working title screen and the start of something good! I grabbed the spritesheet from Row Jam Brough for now, but that will be replaced with a new one when I get there. So exciting!!
 * 45 mins
+* 8:30 PM (ish), I got back into this. There were a couple interruptions, and I was watching the Monster Hunter US Championship (which was awesome).
+* Despite that, I made good progress. We've got a player that can move around an empty level. The next step is to add some slimes and start buildig out basic combat. I'm also going to upload my first build to itch.io (which will take 10-15 mins)
+* 1.5 hrs
+* Total Dev Time - 2.25 hrs
 ### 2020.02.18 Some Smaller Tasks
 I started the process of creating tasks for each of the different sections of the project. This should be very helpful on deciding what to work on at each point of the process. Obviously, these will flow and adjust once the coding has started. I also split the README out into a few different files - readme, changelog, design, and project_plan. Hopefully this will help with organization and allow the readme to be a lot smaller.
 ### 2020.02.13 Stretch Goals
