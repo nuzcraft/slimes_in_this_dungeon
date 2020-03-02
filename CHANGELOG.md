@@ -1,4 +1,8 @@
 ## Changelog
+### 2020.03.02 Day 3!
+* 6:40, got to work a bit early, will hopefully get 20-30 mins of work in, then an hour or so at lunch.
+* 20 mins, made a little progress, but nothing to mention.
+* Okay, so, I had to leave work early and work from home because I barfed 🤮 I'm not sick! My kids had the flu last week and I'm on Tamiflu to keep from being infected and it apparently doesn't sit well with an empty stomach...it was awful. So, I worked through lunch instead, I'll have to try to make up this time tonight. The goal: complete BSP level generation!
 ### 2020.03.01 Day 2!
 * 5:00 AM, up early! I was hoping to get some dev time in before the family wakes up, and it worked out!
 * I finished a couple sections of the project plan:

@@ -18,6 +18,12 @@ function generateLevel(color){
 function generateTiles(){
     // this function will be used to generate the tiles of the map
     let passableTiles = 0;
+    let minXInBounds = numTiles_x;
+    let minYInBounds = numTiles_y;
+    let width = 0;
+    let height = 0;
+    // start by building an empty room
+    // get the dimensions of the room as well
     tiles = [];
     for (let i = 0; i < numTiles_x; i++){
         tiles[i] = [];
@@ -25,11 +31,26 @@ function generateTiles(){
             if (!inBounds(i, j)){
                 tiles[i][j] = new Wall(i, j);
             } else {
+                minXInBounds = ((i <= minXInBounds) ? i : minXInBounds)
+                minYInBounds = ((j <= minYInBounds) ? j : minYInBounds)
+                width = i - minXInBounds + 1;
+                height = j - minYInBounds + 1;
                 tiles[i][j] = new Floor(i, j);
                 passableTiles++;
             }
         }
     }
+
+    // create a container the size of the room
+    let main_container = new Container(minXInBounds, minYInBounds, width, height);
+    // console.log(main_container);
+    let container_tree = split_container(main_container, 4);
+    // console.log(container_tree);
+
+    // now, let's find all the space included in the tree and mark anything
+    // not in those spaces as walls
+    let points = [];
+    points = container_tree.getIncludedPoints(points);
 
     return passableTiles;
 }
