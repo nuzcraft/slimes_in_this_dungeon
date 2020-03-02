@@ -73,3 +73,108 @@ class Exit extends Tile{
         }
     }
 }
+
+class MagentaExit extends Tile{
+    constructor(x, y){
+        super(x, y, spr_magenta_exit, true);
+    }
+
+    stepOn(monster){
+        if(monster.isPlayer){
+            if(level == numLevels){
+                showTitle();
+            } else {
+                level ++;
+                startLevel();
+            }
+        }
+    }
+}
+
+class CyanExit extends Tile{
+    constructor(x, y){
+        super(x, y, spr_cyan_exit, true);
+    }
+
+    stepOn(monster){
+        if(monster.isPlayer){
+            if(level == numLevels){
+                showTitle();
+            } else {
+                level ++;
+                startLevel();
+            }
+        }
+    }
+}
+
+class YellowExit extends Tile{
+    constructor(x, y){
+        super(x, y, spr_yellow_exit, true);
+    }
+
+    stepOn(monster){
+        if(monster.isPlayer){
+            if(level == numLevels){
+                showTitle();
+            } else {
+                level ++;
+                startLevel();
+            }
+        }
+    }
+}
+
+class MagentaCrystal extends Tile {
+    constructor(x, y){
+        super(x, y, spr_magenta_crystal, true);
+    }
+
+    stepOn(monster){
+        // spawn the exit
+        if (monster.isPlayer){
+            randomPassableTile().replace(MagentaExit);
+            // remove the crystal from the floor
+            this.replace(Floor);
+            // add the crystal to the player
+            monster.hasMagenta = true;
+            collected_crystals.push("magenta");
+        }
+    }
+}
+
+class CyanCrystal extends Tile {
+    constructor(x, y){
+        super(x, y, spr_cyan_crystal, true);
+    }
+
+    stepOn(monster){
+        // spawn the exit
+        if (monster.isPlayer){
+            randomPassableTile().replace(CyanExit);
+            // remove the crystal from the floor
+            this.replace(Floor);
+            // add the crystal to the player
+            monster.hasCyan = true;
+            collected_crystals.push("cyan");
+        }
+    }
+}
+
+class YellowCrystal extends Tile {
+    constructor(x, y){
+        super(x, y, spr_yellow_crystal, true);
+    }
+
+    stepOn(monster){
+        // spawn the exit
+        if (monster.isPlayer){
+            randomPassableTile().replace(YellowExit);
+            // remove the crystal from the floor
+            this.replace(Floor);
+            // add the crystal to the player
+            monster.hasYellow = true;
+            collected_crystals.push("yellow");
+        }
+    }
+}

@@ -8,6 +8,11 @@
 * added level exits
 * TECHNICALLY it's now a game! It has a start, gameplay with a goal, and an end. There's lots more to do though! The next step is to add the collectible crystals and the gameplay mechanic where they will unlock the stairs.
 * 1.25 hrs
+* 8:30 PM (ish) I'm back!! I can't remember where we're starting tho 😅
+* aight! great progress tonight!! I got it set up so the player can collect crystals and use them to advance to the next level. There are currently 3 crystals to collect then a final floor to escape the dungeon. Since enemy ai is pretty simple and the player can only bump attack, its actually pretty hard to win!
+* I'll be uploading a Day 2 build to itch.io today as well.
+* 2 hours
+* Total Dev Time: 3.25 hours
 ### 2020.02.29 Day 1 begins!
 * 5:30 AM, 7DRL has begun!!
 * 7 WHOLE MINUTES OF WORK before I had to stop to help deal with a kid 😑

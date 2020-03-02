@@ -95,6 +95,9 @@ class Player extends Monster{
         this.isPlayer = true;
         this.teleportCounter = 0;
         this.stunned = false;
+        this.hasMagenta = false;
+        this.hasCyan = false;
+        this.hasYellow = false;
     }
 
     tryMove(dx, dy){

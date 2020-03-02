@@ -48,13 +48,13 @@ Create the stairs that will lead to new levels. After X levels, create stairs to
 * (ADDITION) add a stun to slimes at the beginning of a level **DONE**
 #### Crystal Creation
 Create the crystals to be collected. Collecting them should unlock the stairs for that level.
-* add code for crystals (magenta, yellow, cyan) to tile.js
-* add sprites for each to the spritesheet
-* add code for yellow, magenta, and cyan stairs to tile.js
-* add sprites for yellow, magenta, and cyan stairs to the spritesheet
-* update the level gen so that one crystal and one stairs are generated on each level. This will be the start of the color-specific level generation code
-* update the code so that the player can collect the crystals
-* update the code so that the stairs don't work unless the player has collected the crystal of that color
+* add code for crystals (magenta, yellow, cyan) to tile.js **DONE**
+* add sprites for each to the spritesheet **DONE**
+* add code for yellow, magenta, and cyan stairs to tile.js **DONE**
+* add sprites for yellow, magenta, and cyan stairs to the spritesheet **DONE**
+* update the level gen so that one crystal and one stairs are generated on each level. This will be the start of the color-specific level generation code **DONE**
+* update the code so that the player can collect the crystals **DONE**
+* update the code so that the stairs don't work unless the player has collected the crystal of that color **DONE**
 #### BSP Level Gen
 Update the level generation code to use BSP to create rooms and doorways.
 * start with the tree and leaf architecture using rooms as the individual leaves. This will require creating some new classes.

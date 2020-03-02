@@ -14,6 +14,17 @@ const spr_slime = 3;
 const spr_player_dead = 4;
 const spr_exit_level = 5;
 const spr_exit_game = 6;
+const spr_magenta_crystal = 7;
+const spr_cyan_crystal = 8;
+const spr_yellow_crystal = 9;
+const spr_magenta_exit = 10;
+const spr_cyan_exit = 11;
+const spr_yellow_exit = 12;
+const spr_empty_crystal = 13;
+
+var level_colors = ['magenta', 'cyan', 'yellow'];
+var level_color = 'magenta';
+var collected_crystals = [];
 
 function setupCanvas() {
     // console.log("setUpCanvas started");
@@ -56,6 +67,8 @@ function showTitle(){
 function startGame(){
     console.log("Starting game.");
     level = 1;
+    level_colors = ['magenta', 'cyan', 'yellow']
+    collected_crystals = [];
     startLevel();
     gameState = "running";
 }
@@ -65,12 +78,29 @@ function startLevel(){
     spawnRate = 15;
     spawnCounter = spawnRate;
 
-    generateLevel();
+    // get a color for this level
+    level_color = shuffle(level_colors)[0];
+    console.log(level_color);
+    // remove this color from the level array
+    level_colors.splice(level_colors.indexOf(level_color), 1);
+    console.log(level_colors);
+
+    generateLevel(level_color);
 
     player = new Player(randomPassableTile());
     console.log("Player placed in level.");
+    for (var i = 0; i < collected_crystals.length; i++){
+        if (collected_crystals[i] == 'magenta'){
+            player.hasMagenta = true;
+        } else if (collected_crystals[i] == 'cyan'){
+            player.hasCyan = true;
+        } else if (collected_crystals[i] == 'yellow'){
+            player.hasYellow = true;
+        }
+    }
 
-    randomPassableTile().replace(Exit);
+    // this was moved into the StepOn code for crystals
+    // randomPassableTile().replace(Exit);
 }
 
 function draw() {
@@ -91,6 +121,27 @@ function draw() {
 
         player.draw();
 
+        // draw effects
+
+        // draw ui
+        if (player.hasMagenta){
+            drawSprite(spr_magenta_crystal, 0, 9);
+        } else {
+            drawSprite(spr_empty_crystal, 0, 9);
+        }
+
+        if (player.hasCyan){
+            drawSprite(spr_cyan_crystal, 0, 10);
+        } else {
+            drawSprite(spr_empty_crystal, 0, 10);
+        }
+
+        if (player.hasYellow){
+            drawSprite(spr_yellow_crystal, 4, 9);
+        } else {
+            drawSprite(spr_empty_crystal, 4, 9);
+        }
+
     }
 }
 
@@ -101,8 +152,8 @@ function drawSprite(sprite, x, y) {
         Math.floor(sprite / 8) * 16,
         16,
         16,
-        x * tileSize,
-        y * tileSize,
+        x * tileSize + shakeX,
+        y * tileSize + shakeY,
         tileSize,
         tileSize
     )

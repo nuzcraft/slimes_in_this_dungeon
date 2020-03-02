@@ -1,5 +1,5 @@
 
-function generateLevel(){
+function generateLevel(color){
     // start by generating tiles on the map
     generateTiles();
 
@@ -7,6 +7,12 @@ function generateLevel(){
     generateMonsters();
 
     // generate other stuff here
+    if (level < numLevels){
+        generateCrystal(color);
+    } else {
+        randomPassableTile().replace(Exit);
+    }
+    
 }
 
 function generateTiles(){
@@ -66,4 +72,16 @@ function generateMonsters(){
 function spawnMonster(){
     let monster = new Slime(randomPassableTile());
     monsters.push(monster);
+}
+
+function generateCrystal(color){
+    // add a switch so that we pass in the right color
+    // for the right crystal
+    if (color == 'magenta') {
+        randomPassableTile().replace(MagentaCrystal);
+    } else if (color == 'cyan'){
+        randomPassableTile().replace(CyanCrystal);
+    } else if (color == 'yellow'){
+        randomPassableTile().replace(YellowCrystal);
+    }
 }
