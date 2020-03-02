@@ -57,9 +57,9 @@ Create the crystals to be collected. Collecting them should unlock the stairs fo
 * update the code so that the stairs don't work unless the player has collected the crystal of that color **DONE**
 #### BSP Level Gen
 Update the level generation code to use BSP to create rooms and doorways.
-* start with the tree and leaf architecture using rooms as the individual leaves. This will require creating some new classes.
-* code the creation of the first leaf, which should be the entire floor
-* code the subdivision of the leaves, recursively, to a specific depth. each subdivision should create 2 sub-leafs and add them to the tree.
+* start with the tree and leaf architecture using rooms as the individual leaves. This will require creating some new classes. **DONE**
+* code the creation of the first leaf, which should be the entire floor **DONE**
+* code the subdivision of the leaves, recursively, to a specific depth. each subdivision should create 2 sub-leafs and add them to the tree. **DONE**
 * once all the subdivision is complete, create the rooms on the level (altering the level generation code)
 * add the individual rooms (smallest leaves) to a global room list to be used by future level generation
 * ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves; this could be done using the list of rooms from the previous step
