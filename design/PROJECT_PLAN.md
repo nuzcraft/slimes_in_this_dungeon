@@ -69,8 +69,9 @@ Change the code so that these objects are placed in rooms as opposed to just loo
 * (UPDATE) spawn the player and crystal in different rooms. Once the crystal is gathered the exit can spawn ANYWHERE. **DONE**
 #### MAGENTA
 Aight, now we get into the specifics. Build out the special ability for Magenta, both for enemies as well as the player. Create the poison clouds and generate them in the level. Update the level generator to do Magenta-specific generation.
-* add poison cloud sprite to spritesheet
-* create poison cloud as a property of a tile, that will damage a player if stepped on
+* update the wall sprites for Magenta Levels **DONE**
+* add poison cloud sprite to spritesheet **DONE**
+* create poison cloud as a property of a tile, that will damage a player if stepped on **DONE**
 * add an optional timer parameter to tiles with poison clouds so that when the timer hits zero, the cloud is destroyed
 * add bomb sprite to the spritesheet
 * code bomb object (similar to an enemy) with a timer. When the timer hits zero, destroy the bomb and spawn a poison cloud with a timer

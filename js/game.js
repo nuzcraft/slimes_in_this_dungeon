@@ -21,6 +21,10 @@ const spr_magenta_exit = 10;
 const spr_cyan_exit = 11;
 const spr_yellow_exit = 12;
 const spr_empty_crystal = 13;
+const spr_magenta_wall = 14;
+const spr_cyan_wall = 15;
+const spr_yellow_wall = 16;
+const spr_poison_cloud = 17;
 
 var level_colors = ['magenta', 'cyan', 'yellow'];
 var level_color = 'magenta';
@@ -113,7 +117,7 @@ function draw() {
 
         for(let i = 0; i < numTiles_x; i++){
             for (let j = 0; j < numTiles_y; j++){
-                getTile(i, j).draw();
+                getTile(i, j, level_color).draw();
             }
         }
 

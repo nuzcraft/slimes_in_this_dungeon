@@ -3,6 +3,10 @@ function generateLevel(color){
     // start by generating tiles on the map
     generateTiles();
 
+    // generate traps here (aka non-monsters)
+    // generateTraps();
+    randomPassableTile().poison_cloud = true;
+
     // generate monsters here
     generateMonsters();
 
@@ -22,6 +26,8 @@ function generateTiles(){
     let minYInBounds = numTiles_y;
     let width = 0;
     let height = 0;
+    let WallType = Wall
+
     // start by building an empty room
     // get the dimensions of the room as well
     tiles = [];
@@ -119,12 +125,11 @@ function inBounds(x, y){
     return x > 0 && y > 0 && x < numTiles_x - 1 && y < numTiles_y - 1;
 }
 
-function getTile(x, y){
+function getTile(x, y, color){
     if(inBounds(x, y)){
         return tiles[x][y];
     } else {
         var wall = new Wall(x, y);
-        wall.sprite = spr_wall;
         return wall;
     }
 }

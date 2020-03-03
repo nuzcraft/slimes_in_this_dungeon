@@ -8,6 +8,9 @@ class Tile{
 
     draw(){
         drawSprite(this.sprite, this.x, this.y);
+        if (this.poison_cloud){
+            drawSprite(spr_poison_cloud, this.x, this.y);
+        }
     }
 
     getNeighbor(dx, dy){
@@ -44,13 +47,23 @@ class Floor extends Tile {
     }
 
     stepOn(monster){
-        // do nothing atm. This is used by the exit tile
+        if(this.poison_cloud){
+            monster.hit()
+        }
     }
 }
 
 class Wall extends Tile {
     constructor(x, y){
         super(x, y, spr_wall, false);
+        // set the sprite based on the color of the level
+        if (level_color == 'magenta'){
+            this.sprite = spr_magenta_wall;
+        } else if (level_color == 'cyan'){
+            this.sprite = spr_cyan_wall;
+        } else if (level_color == 'yellow'){
+            this.sprite = spr_yellow_wall;
+        }
     }
 }
 

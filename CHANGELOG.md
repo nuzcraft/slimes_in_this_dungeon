@@ -1,4 +1,8 @@
 ## Changelog
+### 2020.03.03 Day 4!
+* 6:30, got to work early again!
+* made some progress getting poison clouds working...I may make them their own tile similar to crystals, not sure tho
+* 40 mins
 ### 2020.03.02 Day 3!
 * 6:40, got to work a bit early, will hopefully get 20-30 mins of work in, then an hour or so at lunch.
 * 20 mins, made a little progress, but nothing to mention.
