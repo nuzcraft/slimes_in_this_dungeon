@@ -4,6 +4,39 @@ class Container{
         this.y = y;
         this.w = w;
         this.h = h;
+        this.center = new Point(
+            this.x + (Math.floor(this.w/2)),
+            this.y + (Math.floor(this.h/2))
+        )
+    }
+
+    getIncludedPoints(points){
+        var i, j;
+        for (i = this.x; i < this.x + this.w; i++){
+            for (j = this.y; j < this.y + this.h; j++){
+                points.push([i, j]);
+            }
+        }
+        return points
+    }
+
+    pointsBetweenCenters(points, other){
+        // here we can map the path between the centers of 2 containers
+        // first, get the absolute difference between the two centers x and y
+        var diff_x = Math.abs(other.center.x - this.center.x);
+        var diff_y = Math.abs(other.center.y - this.center.y);
+        // then get the min x and y as our starting place
+        var min_x = Math.min(other.center.x, this.center.x);
+        var min_y = Math.min(other.center.y, this.center.y);
+        // console.log(diff_x, diff_y, min_x, min_y);
+        // now we path between them
+        for (var i = min_x; i <= min_x + diff_x; i++){
+            for (var j = min_y; j <= min_y + diff_y; j++){
+                // console.log([i, j]);
+                points.push([i, j]);
+            }
+        }
+        return points        
     }
 }
 

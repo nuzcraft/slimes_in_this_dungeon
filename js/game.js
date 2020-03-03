@@ -25,6 +25,7 @@ const spr_empty_crystal = 13;
 var level_colors = ['magenta', 'cyan', 'yellow'];
 var level_color = 'magenta';
 var collected_crystals = [];
+var rooms = [];
 
 function setupCanvas() {
     // console.log("setUpCanvas started");
@@ -61,7 +62,7 @@ function showTitle(){
     // drawText("in this DUNGEON", 40, true, 0, canvas.height / 2 - 70, color_white);
     drawText("in this                     ", 40, true, 0, canvas.height / 2 - 70, color_white);
     drawText("           DUNGEON", 40, true, 0, canvas.height / 2 - 70, color_magenta);
-    drawText("WASD keys to start", 20, true, 0, canvas.height / 2 - 35, color_yellow);
+    drawText("Press any key to start", 20, true, 0, canvas.height / 2 - 35, color_yellow);
 }
 
 function startGame(){
@@ -80,14 +81,15 @@ function startLevel(){
 
     // get a color for this level
     level_color = shuffle(level_colors)[0];
-    console.log(level_color);
+    // console.log(level_color);
     // remove this color from the level array
     level_colors.splice(level_colors.indexOf(level_color), 1);
-    console.log(level_colors);
+    // console.log(level_colors);
 
     generateLevel(level_color);
 
-    player = new Player(randomPassableTile());
+    // spawn the player in the first room
+    player = new Player(randomPassableTileInRoom(rooms[0]));
     console.log("Player placed in level.");
     for (var i = 0; i < collected_crystals.length; i++){
         if (collected_crystals[i] == 'magenta'){

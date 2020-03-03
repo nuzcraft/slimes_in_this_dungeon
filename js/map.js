@@ -44,13 +44,72 @@ function generateTiles(){
     // create a container the size of the room
     let main_container = new Container(minXInBounds, minYInBounds, width, height);
     // console.log(main_container);
-    let container_tree = split_container(main_container, 4);
+    let container_tree = split_container(main_container, 3);
     // console.log(container_tree);
+
+    // add all the leaves to an array
+    rooms = shuffle(container_tree.getLeafs())
+    // console.log(rooms);
 
     // now, let's find all the space included in the tree and mark anything
     // not in those spaces as walls
     let points = [];
     points = container_tree.getIncludedPoints(points);
+
+    // now let's connect the rooms and add those hallways to the 'points'
+    for(let i = 0; i < rooms.length - 1; i++) {
+        let center1 = rooms[i].center
+        let center2 = rooms[i+1].center
+        let horiz = randomRange(0, 1);
+
+        // if horizontal, start with a horizontal tunnel
+        if (horiz == 1){
+            let x1 = Math.min(center1.x, center2.x);
+            let x2 = Math.max(center1.x, center2.x);
+            let y = center1.y;
+            for (let j = x1; j <= x2; j++){
+                points.push([j, y]);
+            }
+            let y1 = Math.min(center1.y, center2.y);
+            let y2 = Math.max(center1.y, center2.y);
+            let x = center2.x;
+            for (let k = y1; k <= y2; k++){
+                points.push([x, k]);
+            }
+        } else if (horiz == 0){
+            let y1 = Math.min(center1.y, center2.y);
+            let y2 = Math.max(center1.y, center2.y);
+            let x = center1.x;
+            for (let k = y1; k <= y2; k++){
+                points.push([x, k]);
+            }
+            let x1 = Math.min(center1.x, center2.x);
+            let x2 = Math.max(center1.x, center2.x);
+            let y = center2.y;
+            for (let j = x1; j <= x2; j++){
+                points.push([j, y]);
+            }
+        }
+    }
+   
+    // now we actually create walls and floors
+    for(let i=0;i<numTiles_x;i++){
+        tiles[i]=[];
+        for(let j=0;j<numTiles_y;j++){
+            let inPoints = false;
+            for (let k = 0; k < points.length; k++){
+                if (points[k][0] === i && points[k][1] ===j){
+                    inPoints = true;
+                }
+            }
+            if(!inBounds(i, j) || !inPoints){ // removed the 30% for a wall
+                tiles[i][j] = new Wall(i, j);
+            }else{
+                tiles[i][j] = new Floor(i, j);
+                passableTiles++;
+            }
+        }
+    }
 
     return passableTiles;
 }
@@ -81,12 +140,25 @@ function randomPassableTile(){
     return tile;
 }
 
+function randomPassableTileInRoom(room){
+    let tile;
+    tryTo('get random passable tile', function(){
+        let x = randomRange(room.x, room.x + room.w - 1);
+        let y = randomRange(room.y, room.y + room.h - 1);
+        tile = getTile(x, y);
+        return tile.passable && !tile.monster;
+    })
+    return tile;
+}
+
 function generateMonsters(){
     monsters = [];
-    const numMonsters = 3;
-    console.log(numMonsters + " monsters will be generated.");
-    for (let i = 0; i < numMonsters; i++){
-        spawnMonster();
+    // start with i = 1 bc room 1 is where the player will start
+    for(let i = 1; i < rooms.length; i++){
+        let numMonsters = randomRange(0, 2);
+        for(let j = 0; j < numMonsters; j++){
+            spawnMonsterInRoom(rooms[i]);
+        }
     }
 }
 
@@ -95,14 +167,22 @@ function spawnMonster(){
     monsters.push(monster);
 }
 
+function spawnMonsterInRoom(room){
+    let monster = new Slime(randomPassableTileInRoom(room));
+    monsters.push(monster);
+}
+
 function generateCrystal(color){
     // add a switch so that we pass in the right color
     // for the right crystal
+
+    // choose the room to spawn the crystal in, not in room[0]
+    let i = randomRange(1, rooms.length - 1);
     if (color == 'magenta') {
-        randomPassableTile().replace(MagentaCrystal);
+        randomPassableTileInRoom(rooms[i]).replace(MagentaCrystal);
     } else if (color == 'cyan'){
-        randomPassableTile().replace(CyanCrystal);
+        randomPassableTileInRoom(rooms[i]).replace(CyanCrystal);
     } else if (color == 'yellow'){
-        randomPassableTile().replace(YellowCrystal);
+        randomPassableTileInRoom(rooms[i]).replace(YellowCrystal);
     }
 }

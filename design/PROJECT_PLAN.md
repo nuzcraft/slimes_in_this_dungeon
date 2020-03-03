@@ -60,13 +60,13 @@ Update the level generation code to use BSP to create rooms and doorways.
 * start with the tree and leaf architecture using rooms as the individual leaves. This will require creating some new classes. **DONE**
 * code the creation of the first leaf, which should be the entire floor **DONE**
 * code the subdivision of the leaves, recursively, to a specific depth. each subdivision should create 2 sub-leafs and add them to the tree. **DONE**
-* once all the subdivision is complete, create the rooms on the level (altering the level generation code)
-* add the individual rooms (smallest leaves) to a global room list to be used by future level generation
-* ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves; this could be done using the list of rooms from the previous step
+* once all the subdivision is complete, create the rooms on the level (altering the level generation code) **DONE**
+* add the individual rooms (smallest leaves) to a global room list to be used by future level generation **DONE**
+* ensure the player can travel between all the rooms by placing hallways (doors) in the walls connecting some adjacent rooms. It may look best to do this only between the deepest leaves instead of all leaves; this could be done using the list of rooms from the previous step **DONE**
 #### Update Player, Enemy, Crystal, and Stair Placement
 Change the code so that these objects are placed in rooms as opposed to just looking at the floor as a whole.
-* update the level generation so that it loops through each room to generate enemies (and eventually traps)
-* spawn the player, stairs, and crystal in different rooms - it may be worth it to add code so that the player and crystal are spawned on opposite sides of the floor
+* update the level generation so that it loops through each room to generate enemies (and eventually traps). One enemy per room for now. **DONE**
+* (UPDATE) spawn the player and crystal in different rooms. Once the crystal is gathered the exit can spawn ANYWHERE. **DONE**
 #### MAGENTA
 Aight, now we get into the specifics. Build out the special ability for Magenta, both for enemies as well as the player. Create the poison clouds and generate them in the level. Update the level generator to do Magenta-specific generation.
 * add poison cloud sprite to spritesheet
