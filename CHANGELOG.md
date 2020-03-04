@@ -2,7 +2,11 @@
 ### 2020.03.03 Day 4!
 * 6:30, got to work early again!
 * made some progress getting poison clouds working...I may make them their own tile similar to crystals, not sure tho
-* 40 mins
+* 45 mins
+* 9 PM. I had a lot of chores to do before I could get started. Honestly, this 7DRL couldn't have fallen on a worse week! We are packing up the house to move! Super exciting! but also, lots of fucking work.
+* Things are starting to slow... I got most of the logic set up for poison bombs and clouds, but still have to set it up so that enemies and players can use them. It's kind of amazing, but just adding the poison clouds has made the magenta level so much more dynamic. Tomorrow, I'll finish up the magenta level and start on Cyan.
+* 1.5 hrs
+* Total Dev Time - 2.25 hrs
 ### 2020.03.02 Day 3!
 * 6:40, got to work a bit early, will hopefully get 20-30 mins of work in, then an hour or so at lunch.
 * 20 mins, made a little progress, but nothing to mention.

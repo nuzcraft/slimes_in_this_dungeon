@@ -8,9 +8,6 @@ class Tile{
 
     draw(){
         drawSprite(this.sprite, this.x, this.y);
-        if (this.poison_cloud){
-            drawSprite(spr_poison_cloud, this.x, this.y);
-        }
     }
 
     getNeighbor(dx, dy){
@@ -47,9 +44,7 @@ class Floor extends Tile {
     }
 
     stepOn(monster){
-        if(this.poison_cloud){
-            monster.hit()
-        }
+        // does nothing for now
     }
 }
 
@@ -149,6 +144,7 @@ class MagentaCrystal extends Tile {
             randomPassableTile().replace(MagentaExit);
             // remove the crystal from the floor
             this.replace(Floor);
+            this.monster = monster;
             // add the crystal to the player
             monster.hasMagenta = true;
             collected_crystals.push("magenta");
@@ -167,6 +163,7 @@ class CyanCrystal extends Tile {
             randomPassableTile().replace(CyanExit);
             // remove the crystal from the floor
             this.replace(Floor);
+            this.monster = monster;
             // add the crystal to the player
             monster.hasCyan = true;
             collected_crystals.push("cyan");
@@ -185,9 +182,32 @@ class YellowCrystal extends Tile {
             randomPassableTile().replace(YellowExit);
             // remove the crystal from the floor
             this.replace(Floor);
+            this.monster = monster;
             // add the crystal to the player
             monster.hasYellow = true;
             collected_crystals.push("yellow");
+        }
+    }
+}
+
+class PoisonCloud extends Floor {
+    constructor(x, y, timer=null){
+        super(x, y);
+        this.sprite = spr_poison_cloud;
+        this.timer = timer;
+    }
+
+    stepOn(monster){
+        monster.hit();
+    }
+
+    timesUp(){
+        // destroy this poison cloud
+        this.replace(Floor);
+        // if not from a bomb, spawn a new cloud
+        if (!this.fromBomb){
+            let tile = randomPassableTile();
+            tiles[tile.x][tile.y] = new PoisonCloud(tile.x, tile.y, randomRange(5, 10));
         }
     }
 }

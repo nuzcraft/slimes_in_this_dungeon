@@ -3,12 +3,11 @@ function generateLevel(color){
     // start by generating tiles on the map
     generateTiles();
 
-    // generate traps here (aka non-monsters)
-    // generateTraps();
-    randomPassableTile().poison_cloud = true;
-
     // generate monsters here
     generateMonsters();
+
+    // generate traps here (aka non-monsters)
+    generateTraps();
 
     // generate other stuff here
     if (level < numLevels){
@@ -26,7 +25,6 @@ function generateTiles(){
     let minYInBounds = numTiles_y;
     let width = 0;
     let height = 0;
-    let WallType = Wall
 
     // start by building an empty room
     // get the dimensions of the room as well
@@ -189,5 +187,17 @@ function generateCrystal(color){
         randomPassableTileInRoom(rooms[i]).replace(CyanCrystal);
     } else if (color == 'yellow'){
         randomPassableTileInRoom(rooms[i]).replace(YellowCrystal);
+    }
+}
+
+function generateTraps(){
+    for (let i = 1; i < rooms.length; i++){
+        if (level_color == 'magenta'){
+            let numPoisonClouds = randomRange(0, 2);
+            for (let j = 1; j < numPoisonClouds; j++){
+                let tile = randomPassableTileInRoom(rooms[i]);
+                tiles[tile.x][tile.y] = new PoisonCloud(tile.x, tile.y, randomRange(5, 10));
+            }
+        }
     }
 }

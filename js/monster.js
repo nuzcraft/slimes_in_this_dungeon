@@ -85,7 +85,7 @@ class Monster{
     die(){
         this.dead = true;
         this.tile.monster = null;
-        this.sprite = spr_floor;
+        this.sprite = spr_empty;
     }
 }
 
@@ -116,5 +116,35 @@ class Player extends Monster{
 class Slime extends Monster{
     constructor(tile){
         super(tile, spr_slime);
+    }
+
+    throwPoisonBomb(){
+        let targetTile = player.tile.getAdjacentPassableNeighbor()[0];
+        let bomb = new PoisonBomb(targetTile);
+        bomb.offsetX = this.tile.x - targetTile.x;
+        bomb.offsetY = this.tile.y - targetTile.y;
+        monsters.push(bomb);
+    }
+}
+
+class PoisonBomb extends Monster{
+    constructor(tile){
+        super(tile, spr_poison_bomb);
+        this.timer = 3;
+    }
+
+    tryMove(dx, dy){
+        // does not move
+    }
+
+    timesUp(){
+        this.die();
+    }
+
+    die(){
+        super.die();
+        this.sprite = spr_poison_cloud;
+        tiles[this.tile.x][this.tile.y] = new PoisonCloud(this.tile.x, this.tile.y, 3);
+        tiles[this.tile.x][this.tile.y].fromBomb = true;
     }
 }

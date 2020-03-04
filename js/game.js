@@ -25,6 +25,8 @@ const spr_magenta_wall = 14;
 const spr_cyan_wall = 15;
 const spr_yellow_wall = 16;
 const spr_poison_cloud = 17;
+const spr_empty = 18;
+const spr_poison_bomb = 19;
 
 var level_colors = ['magenta', 'cyan', 'yellow'];
 var level_color = 'magenta';
@@ -166,22 +168,46 @@ function drawSprite(sprite, x, y) {
 }
 
 function tick(){
+    // let monsters take their turn / remove dead monsters
     for(let k=monsters.length-1;k>=0;k--){
 		if(!monsters[k].dead){
-			monsters[k].update();
+            monsters[k].update();
+            // monsters[k].throwPoisonBomb();
+            if (monsters[k].timer){
+                monsters[k].timer--;
+                if (monsters[k].timer == 0){
+                    monsters[k].timesUp();
+                }
+            }
 		}else{
 			monsters.splice(k, 1);
 		}
     }
+
     // player.update();
     if (player.dead){
         gameState = "dead";
     }
+
+    // spawn new monsters in the level
     spawnCounter--;
     if (spawnCounter <= 0){
         spawnMonster();
         spawnCounter = spawnRate;
         spawnRate --;
+    }
+
+    // check for tiles that run on a timer
+    for(let i = 0; i < numTiles_x; i++){
+        for (let j = 0; j < numTiles_y; j++){
+            let tile = getTile(i, j, level_color);
+            if (tile.timer){
+                tile.timer--;
+                if (tile.timer == 0){
+                    tile.timesUp();
+                }
+            }
+        }
     }
 }
 
@@ -192,4 +218,16 @@ function screenshake(){
     let shakeAngle = Math.random()*Math.PI*2;
 	shakeX = Math.round(Math.cos(shakeAngle)*shakeAmount);
 	shakeY = Math.round(Math.sin(shakeAngle)*shakeAmount);
+}
+
+function getClosestMonster(){
+    let dist = 100; // arbitrary large distance
+    var monster
+    for (let i = 0; i < monsters.length - 1; i++){
+        if (player.tile.dist(monsters[i].tile) < dist){
+            dist = player.tile.dist(monsters[i].tile);
+            monster = monsters[i];
+        }
+    }
+    return monster
 }
