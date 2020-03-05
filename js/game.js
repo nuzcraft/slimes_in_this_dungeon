@@ -103,7 +103,7 @@ function startLevel(){
 
     // spawn the player in the first room
     player = new Player(randomPassableTileInRoom(rooms[0]));
-    // player.hasCyan = true; // for debugging
+    player.hasCyan = true; // for debugging
     console.log("Player placed in level.");
     for (var i = 0; i < collected_crystals.length; i++){
         if (collected_crystals[i] == 'magenta'){
@@ -160,8 +160,9 @@ function draw() {
                 textColor = color_cyan;
             }
             drawText("(2)", 28, false, 56, 10*64+36, textColor);
-            drawText("Throw Wind Gust",20, false, 90, 10*64+28, textColor);
-            drawText("at nearest enemy", 20, false, 94, 10*64+44, textColor);
+            drawText("Summon Tornado",20, false, 90, 10*64+28, textColor);
+            drawText("in front of you", 20, false, 98, 10*64+44, textColor);
+            drawText("(based on last movement)", 14, false, 86, 10*64+57, textColor);
         } else {
             drawSprite(spr_empty_crystal, 0, 10);
         }

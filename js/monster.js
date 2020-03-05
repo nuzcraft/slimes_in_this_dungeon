@@ -143,10 +143,20 @@ class Player extends Monster{
 
     throwWindGust(){
         if (this.hasCyan && this.windGustCooldown == 0){
-            let monster = getClosestMonster();
-            super.throwWindGust(monster);
-            this.windGustCooldown = 5;
-            tick();
+            // let the player place a wind gust in the direction of
+            // last movement
+            let newTile = player.tile.getNeighbor(player.lastMove[0], player.lastMove[1]);
+            // kill any monster on the tile and summon a wind gust
+            if (newTile.monster || newTile.passable){
+                if (newTile.monster){
+                    newTile.monster.hit();
+                }
+                if (newTile.passable){
+                    tiles[newTile.x][newTile.y] = new WindGust(newTile.x, newTile.y, 4);
+                }
+                this.windGustCooldown = 5;
+                tick();
+            }
         }
     }
 
@@ -246,10 +256,12 @@ class PoisonBomb extends Monster{
 }
 
 class WindGustMon extends Monster{
+    // lol this is a stupid monster that only
+    // exists so we can see where the wind gust comes from
     constructor(tile){
         super(tile, spr_wind_gust);
         this.timer = 1;
-        // this.die();
+        this.die();
     }
 
     tryMove(dx, dy){

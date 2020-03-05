@@ -216,16 +216,11 @@ class PoisonCloud extends Floor {
     }
 }
 
-class WindGust extends Floor{
+class WindGust extends Wall{
     constructor(x, y, timer=null){
         super(x, y);
         this.sprite = spr_wind_gust;
         this.timer = timer;
-    }
-
-    stepOn(monster){
-        let targetTile = shuffle(monster.tile.getAdjacentPassableNeighbor())[0];
-        monster.tryMove(targetTile.x - monster.tile.x, targetTile.y - monster.tile.y);
     }
 
     timesUp(){
