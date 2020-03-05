@@ -4,7 +4,8 @@
 * Okay, I'm much happier with this setup, it feels less like a cop out and a copy of throwing poison bombs.
 * 20 mins
 * 11:30 AM, over my lunch, time to get cracking
-* Hurrah!! We are functionally done!! I've hit everything in my main project plan! Now, it's time to plan some stretch goals :D
+* Hurrah!! We are functionally done!! I've hit everything in my main project plan! Now, it's time to plan some stretch goals :D. 
+* Hello v1.0!!
 * 1 hr
 ### 2020.03.04 Day 5!
 * 1:37 PM, HOLY CANOLI DAY 5 ALREADY. Also, I've not been able to do ANY work on this today (besides write this note). My fingers are crossed that I'll get time tonight... I'm definitely glad that I structured my project plan so that I could piecemeal this out...I'll be lucky to finish the cyan and yellow levels by the end at this rate (which was my minimum viable product!!)

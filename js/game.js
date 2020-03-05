@@ -105,7 +105,7 @@ function startLevel(){
 
     // spawn the player in the first room
     player = new Player(randomPassableTileInRoom(rooms[0]));
-    player.hasYellow = true; // for debugging
+    // player.hasYellow = true; // for debugging
     console.log("Player placed in level.");
     for (var i = 0; i < collected_crystals.length; i++){
         if (collected_crystals[i] == 'magenta'){

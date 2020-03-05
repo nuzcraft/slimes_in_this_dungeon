@@ -138,7 +138,7 @@ function randomPassableTile(){
         let x = randomRange(0, numTiles_x - 1);
         let y = randomRange(0, numTiles_y - 1);
         tile = getTile(x, y);
-        return tile.passable && !tile.monster;
+        return tile.passable && !tile.monster && !tile.isExit && !tile.isCrystal;
     })
     return tile;
 }
