@@ -94,18 +94,19 @@ Now, do the same for Cyan. Additionally, add code so that the each level is rand
 * adjust code so that enemies from previous levels can spawn into the new **DONE**
 #### YELLOW
 Now, do the same for Yellow.
-* add horizontal and vertical zaps to the sprite sheet
-* create code to create zaps horizontally or vertically from a source until a solid object (like a wall) is found. This should damage players and enemies
-* update yellow enemy ai so they do this after a turn of charging up
-* update level generation code so that additional pillars are added to individual rooms, to hide behind
-* create a special ability for the player to be able to do this. It may be difficult to determine which direction the bolt should go in.
+* add horizontal and vertical zaps to the sprite sheet **DONE**
+* create code to create zaps horizontally or vertically from a source until a solid object (like a wall) is found. This should damage players and enemies **DONE**
+* update yellow enemy ai so they do this after a turn of charging up **DONE**
+* create a special ability for the player to be able to do this. It may be difficult to determine which direction the bolt should go in. **DONE**
 * (BONUS) add trip wires that flip on and off.
 #### Exit Level
 The final level should be able to spawn all types of slimes / all types of traps from previous levels.
 Exiting here should end the game
-* adjust the level generator to spawn all types of enemies and traps in smaller quantities in each of the rooms
+* adjust the level generator to spawn all types of enemies and traps in smaller quantities in each of the rooms **DONE**
 * this level will not spawn a crystal, but instead unlocked stairs
-* exiting ends the game!
+* exiting ends the game! **DONE**
+#### BUGS
+* make it so that poison clouds, wind gusts, bombs, etc, cannot spawn on crystals or exits **DONE**
 
 ### Stretch Goals
 If everything above has been completed, we can consider the jam a success. Everything below this is extra and should only be worked on if there is extra time.

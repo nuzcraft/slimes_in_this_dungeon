@@ -105,6 +105,19 @@ class Monster{
         gust.offsetY = this.tile.y - targetTile.y;
         monsters.push(gust);
     }
+
+    summonLightning(){
+        // summon horizontal and vertical lightnings
+        let directions = [
+            [0, -1],
+            [0, 1],
+            [-1, 0],
+            [1, 0]
+        ];
+        for (let k=0; k < directions.length; k++){
+            boltTravel(directions[k], spr_lightning, this.tile);
+        }
+    }
 }
 
 class Player extends Monster{
@@ -118,6 +131,7 @@ class Player extends Monster{
         this.hasYellow = false;
         this.poisonBombCooldown = 0;
         this.windGustCooldown = 0;
+        this.lightningCooldown = 0;
     }
 
     tryMove(dx, dy){
@@ -129,6 +143,9 @@ class Player extends Monster{
         }
         if (this.windGustCooldown > 0){
             this.windGustCooldown--;
+        }
+        if (this.lightningCooldown > 0){
+            this.lightningCooldown--;
         }
     }
 
@@ -147,16 +164,24 @@ class Player extends Monster{
             // last movement
             let newTile = player.tile.getNeighbor(player.lastMove[0], player.lastMove[1]);
             // kill any monster on the tile and summon a wind gust
-            if (newTile.monster || newTile.passable){
+            if (newTile.monster || (newTile.passable&& !newTile.isExit && !newTile.isCrystal)){
                 if (newTile.monster){
                     newTile.monster.hit();
                 }
-                if (newTile.passable){
+                if (newTile.passable && !newTile.isExit && !newTile.isCrystal){
                     tiles[newTile.x][newTile.y] = new WindGust(newTile.x, newTile.y, 4);
                 }
                 this.windGustCooldown = 5;
                 tick();
             }
+        }
+    }
+
+    summonLightning(){
+        if (this.hasYellow && this.lightningCooldown == 0){
+            super.summonLightning();
+            this.lightningCooldown = 10;
+            tick();
         }
     }
 
@@ -221,9 +246,14 @@ class YellowSlime extends Monster{
     }
 
     tryMove(dx, dy){
-        if(this.tile.dist(player.tile) < 4 && this.ability_timer == 0){
-            // this.throwPoisonBomb(player);
+        if(this.ability_timer == 0){
+            this.sprite = spr_yellow_slime;
+            this.summonLightning();
             this.ability_timer = randomRange(4, 7);
+        } else if (this.ability_timer == 1){
+            // pause for a turn to charge up
+            this.sprite = spr_yellow_slime_charged;
+            this.ability_timer--;
         } else {
             if (this.ability_timer > 0) {
                 this.ability_timer--;

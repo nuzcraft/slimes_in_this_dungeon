@@ -24,11 +24,11 @@ class Tile{
     }
 
     getAdjacentPassableNeighbor(){
-        return this.getAdjacentNeighbors().filter(t => t.passable);
+        return this.getAdjacentNeighbors().filter(t => t.passable).filter(v => !v.isExit).filter(w => !w.isCrystal);
     }
 
     getAdjacentPassableNeighborWithoutMonsters(){
-        return this.getAdjacentNeighbors().filter(t => t.passable).filter(u => !u.monster);
+        return this.getAdjacentNeighbors().filter(t => t.passable).filter(u => !u.monster).filter(v => !v.isExit).filter(w => !w.isCrystal);
     }
 
     // manhattan distance
@@ -39,6 +39,20 @@ class Tile{
     replace(newTileType){
         tiles[this.x][this.y] = new newTileType(this.x, this.y);
         return tiles[this.x][this.y];
+    }
+
+    setEffect(effectSprite){
+        this.effect = effectSprite;
+        this.effectCounter = 30;
+    }
+
+    drawEffect(){
+        if (this.effectCounter){
+            this.effectCounter--;
+            ctx.globalAlpha = this.effectCounter / 30;
+            drawSprite(this.effect, this.x, this.y);
+            ctx.globalAlpha = 1;
+        }
     }
 }
 
@@ -72,6 +86,7 @@ class Exit extends Tile{
         if (level == numLevels){
             this.sprite = spr_exit_game;
         }
+        this.isExit = true;
     }
 
     stepOn(monster){
@@ -89,6 +104,7 @@ class Exit extends Tile{
 class MagentaExit extends Tile{
     constructor(x, y){
         super(x, y, spr_magenta_exit, true);
+        this.isExit = true;
     }
 
     stepOn(monster){
@@ -106,6 +122,7 @@ class MagentaExit extends Tile{
 class CyanExit extends Tile{
     constructor(x, y){
         super(x, y, spr_cyan_exit, true);
+        this.isExit = true;
     }
 
     stepOn(monster){
@@ -123,6 +140,7 @@ class CyanExit extends Tile{
 class YellowExit extends Tile{
     constructor(x, y){
         super(x, y, spr_yellow_exit, true);
+        this.isExit = true;
     }
 
     stepOn(monster){
@@ -140,6 +158,7 @@ class YellowExit extends Tile{
 class MagentaCrystal extends Tile {
     constructor(x, y){
         super(x, y, spr_magenta_crystal, true);
+        this.isCrystal = true;
     }
 
     stepOn(monster){
@@ -159,6 +178,7 @@ class MagentaCrystal extends Tile {
 class CyanCrystal extends Tile {
     constructor(x, y){
         super(x, y, spr_cyan_crystal, true);
+        this.isCrystal = true;
     }
 
     stepOn(monster){
@@ -178,6 +198,7 @@ class CyanCrystal extends Tile {
 class YellowCrystal extends Tile {
     constructor(x, y){
         super(x, y, spr_yellow_crystal, true);
+        this.isCrystal = true;
     }
 
     stepOn(monster){

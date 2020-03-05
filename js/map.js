@@ -149,7 +149,7 @@ function randomPassableTileInRoom(room){
         let x = randomRange(room.x, room.x + room.w - 1);
         let y = randomRange(room.y, room.y + room.h - 1);
         tile = getTile(x, y);
-        return tile.passable && !tile.monster;
+        return tile.passable && !tile.monster && !tile.isExit && !tile.isCrystal;
     })
     return tile;
 }
@@ -185,13 +185,19 @@ function spawnMonster(){
 }
 
 function spawnMonsterInRoom(room, color){
-    if (color == 'magenta'){
+    let chosenColor = color;
+    if  (chosenColor === undefined){
+        let possibleMonsters = collected_crystals.slice();
+        possibleMonsters.push('colorless');
+        chosenColor = shuffle(possibleMonsters)[0];
+    }
+    if (chosenColor == 'magenta'){
         let monster = new MagentaSlime(randomPassableTileInRoom(room));
         monsters.push(monster); 
-    } else if (color == 'cyan'){
+    } else if (chosenColor == 'cyan'){
         let monster = new CyanSlime(randomPassableTileInRoom(room));
         monsters.push(monster); 
-    } else if (color == 'yellow'){
+    } else if (chosenColor == 'yellow'){
         let monster = new YellowSlime(randomPassableTileInRoom(room));
         monsters.push(monster); 
     } else {
@@ -217,14 +223,15 @@ function generateCrystal(color){
 
 function generateTraps(){
     for (let i = 0; i < rooms.length; i++){
-        if (level_color == 'magenta'){
+        if (level_color == 'magenta' || level_color === undefined){
             let numPoisonClouds = randomRange(0, 2);
             for (let j = 0; j < numPoisonClouds; j++){
                 let tile = randomPassableTileInRoom(rooms[i]);
                 tiles[tile.x][tile.y] = new PoisonCloud(tile.x, tile.y, randomRange(5, 10));
             }
-        } else if (level_color == 'cyan'){
-            let numSpikes = randomRange(0, 2);
+        } 
+        if (level_color == 'cyan' || level_color === undefined){
+        let numSpikes = randomRange(0, 2);
             for (let j = 0; j < numSpikes; j++){
                 let tile = randomPassableTileInRoom(rooms[i]);
                 tiles[tile.x][tile.y] = new Spikes(tile.x, tile.y, randomRange(4, 6));

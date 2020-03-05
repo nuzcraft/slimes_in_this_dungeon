@@ -33,6 +33,8 @@ const spr_cyan_slime = 21;
 const spr_yellow_slime = 22;
 const spr_wind_gust = 23;
 const spr_spikes = 24;
+const spr_lightning = 25;
+const spr_yellow_slime_charged = 26;
 
 var level_colors = ['magenta', 'cyan', 'yellow'];
 var level_color = 'magenta';
@@ -103,7 +105,7 @@ function startLevel(){
 
     // spawn the player in the first room
     player = new Player(randomPassableTileInRoom(rooms[0]));
-    player.hasCyan = true; // for debugging
+    player.hasYellow = true; // for debugging
     console.log("Player placed in level.");
     for (var i = 0; i < collected_crystals.length; i++){
         if (collected_crystals[i] == 'magenta'){
@@ -138,6 +140,11 @@ function draw() {
         player.draw();
 
         // draw effects
+        for(let i = 0; i < numTiles_x; i++){
+            for (let j = 0; j < numTiles_y; j++){
+                getTile(i, j, level_color).drawEffect();
+            }
+        }
 
         // draw ui
         if (player.hasMagenta){
@@ -169,6 +176,14 @@ function draw() {
 
         if (player.hasYellow){
             drawSprite(spr_yellow_crystal, 4, 9);
+            let textColor = color_dark_grey;
+            if (player.lightningCooldown == 0){
+                textColor = color_yellow;
+            }
+            drawText("(3)", 28, false, 5*64, 9*64+36, textColor);
+            drawText("Summon LIGHTNING",20, false, 5*64+44, 9*64+28, textColor);
+            drawText("horizontally and vertically", 20, false, 5*64+36, 9*64+44, textColor);
+            // drawText("(based on last movement)", 14, false, 86, 10*64+57, textColor);
         } else {
             drawSprite(spr_empty_crystal, 4, 9);
         }
@@ -253,4 +268,20 @@ function getClosestMonster(){
         }
     }
     return monster
+}
+
+function boltTravel(direction, effect, start_tile){
+    let newTile = start_tile;
+    while (true){
+        let testTile = newTile.getNeighbor(direction[0], direction[1]);
+        if(testTile.passable){
+            newTile = testTile;
+            if (newTile.monster){
+                newTile.monster.hit();
+            }
+            newTile.setEffect(effect);
+        } else {
+            break;
+        }
+    }
 }
