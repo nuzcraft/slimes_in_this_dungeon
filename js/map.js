@@ -160,19 +160,44 @@ function generateMonsters(){
     for(let i = 1; i < rooms.length; i++){
         let numMonsters = randomRange(0, 2);
         for(let j = 0; j < numMonsters; j++){
-            spawnMonsterInRoom(rooms[i]);
+            spawnMonsterInRoom(rooms[i], level_color);
         }
     }
 }
 
 function spawnMonster(){
-    let monster = new Slime(randomPassableTile());
-    monsters.push(monster);
+    let possibleMonsters = collected_crystals.slice();
+    possibleMonsters.push('colorless');
+    let chosenColor = shuffle(possibleMonsters)[0];
+    if (chosenColor == 'magenta'){
+        let monster = new MagentaSlime(randomPassableTile());
+        monsters.push(monster); 
+    } else if (chosenColor == 'cyan'){
+        let monster = new CyanSlime(randomPassableTile());
+        monsters.push(monster);
+    } else if (chosenColor == 'yellow'){
+        let monster = new YellowSlime(randomPassableTile());
+        monsters.push(monster);
+    } else {
+        let monster = new Slime(randomPassableTile());
+        monsters.push(monster);
+    }
 }
 
-function spawnMonsterInRoom(room){
-    let monster = new Slime(randomPassableTileInRoom(room));
-    monsters.push(monster);
+function spawnMonsterInRoom(room, color){
+    if (color == 'magenta'){
+        let monster = new MagentaSlime(randomPassableTileInRoom(room));
+        monsters.push(monster); 
+    } else if (color == 'cyan'){
+        let monster = new CyanSlime(randomPassableTileInRoom(room));
+        monsters.push(monster); 
+    } else if (color == 'yellow'){
+        let monster = new YellowSlime(randomPassableTileInRoom(room));
+        monsters.push(monster); 
+    } else {
+        let monster = new Slime(randomPassableTileInRoom(room));
+        monsters.push(monster);
+    }
 }
 
 function generateCrystal(color){
@@ -191,12 +216,18 @@ function generateCrystal(color){
 }
 
 function generateTraps(){
-    for (let i = 1; i < rooms.length; i++){
+    for (let i = 0; i < rooms.length; i++){
         if (level_color == 'magenta'){
             let numPoisonClouds = randomRange(0, 2);
-            for (let j = 1; j < numPoisonClouds; j++){
+            for (let j = 0; j < numPoisonClouds; j++){
                 let tile = randomPassableTileInRoom(rooms[i]);
                 tiles[tile.x][tile.y] = new PoisonCloud(tile.x, tile.y, randomRange(5, 10));
+            }
+        } else if (level_color == 'cyan'){
+            let numSpikes = randomRange(0, 2);
+            for (let j = 0; j < numSpikes; j++){
+                let tile = randomPassableTileInRoom(rooms[i]);
+                tiles[tile.x][tile.y] = new Spikes(tile.x, tile.y, randomRange(4, 6));
             }
         }
     }

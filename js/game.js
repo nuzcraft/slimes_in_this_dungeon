@@ -5,6 +5,7 @@ const color_magenta = "#FF00FF";
 const color_cyan = "#00FFFF";
 const color_yellow = "#FFFF00";
 const color_black = "#000000";
+const color_dark_grey = "#555555";
 
 // sprite indexes
 const spr_player = 0;
@@ -27,11 +28,17 @@ const spr_yellow_wall = 16;
 const spr_poison_cloud = 17;
 const spr_empty = 18;
 const spr_poison_bomb = 19;
+const spr_magenta_slime = 20;
+const spr_cyan_slime = 21;
+const spr_yellow_slime = 22;
+const spr_wind_gust = 23;
+const spr_spikes = 24;
 
 var level_colors = ['magenta', 'cyan', 'yellow'];
 var level_color = 'magenta';
 var collected_crystals = [];
 var rooms = [];
+var monsters = [];
 
 function setupCanvas() {
     // console.log("setUpCanvas started");
@@ -53,7 +60,7 @@ function drawText(text, size, centered, textX, textY, color){
     if (centered) { // generally, print in center of whole screen
         textX = ((canvas.width - ctx.measureText(text).width) / 2) + textX;
     } else { // if not centered, put it in the ui section
-        textY = canvas.height - uiHeight * tileSize + 25 + textY;
+        // textY = canvas.height - uiHeight * tileSize + 25 + textY;
     }
     ctx.fillText(text, textX, textY);
 }
@@ -96,6 +103,7 @@ function startLevel(){
 
     // spawn the player in the first room
     player = new Player(randomPassableTileInRoom(rooms[0]));
+    // player.hasCyan = true; // for debugging
     console.log("Player placed in level.");
     for (var i = 0; i < collected_crystals.length; i++){
         if (collected_crystals[i] == 'magenta'){
@@ -134,12 +142,26 @@ function draw() {
         // draw ui
         if (player.hasMagenta){
             drawSprite(spr_magenta_crystal, 0, 9);
+            let textColor = color_dark_grey;
+            if (player.poisonBombCooldown == 0){
+                textColor = color_magenta;
+            }
+            drawText("(1)", 28, false, 56, 9*64+36, textColor);
+            drawText("Throw Poison Bomb",20, false, 90, 9*64+28, textColor);
+            drawText("at nearest enemy", 20, false, 94, 9*64+44, textColor);
         } else {
             drawSprite(spr_empty_crystal, 0, 9);
         }
 
         if (player.hasCyan){
             drawSprite(spr_cyan_crystal, 0, 10);
+            let textColor = color_dark_grey;
+            if (player.windGustCooldown == 0){
+                textColor = color_cyan;
+            }
+            drawText("(2)", 28, false, 56, 10*64+36, textColor);
+            drawText("Throw Wind Gust",20, false, 90, 10*64+28, textColor);
+            drawText("at nearest enemy", 20, false, 94, 10*64+44, textColor);
         } else {
             drawSprite(spr_empty_crystal, 0, 10);
         }
@@ -223,8 +245,8 @@ function screenshake(){
 function getClosestMonster(){
     let dist = 100; // arbitrary large distance
     var monster
-    for (let i = 0; i < monsters.length - 1; i++){
-        if (player.tile.dist(monsters[i].tile) < dist){
+    for (let i = 0; i < monsters.length; i++){
+        if (player.tile.dist(monsters[i].tile) < dist && monsters[i] != player){
             dist = player.tile.dist(monsters[i].tile);
             monster = monsters[i];
         }

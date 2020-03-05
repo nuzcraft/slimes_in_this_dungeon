@@ -77,21 +77,21 @@ Aight, now we get into the specifics. Build out the special ability for Magenta,
 * code bomb object (similar to an enemy) with a timer. When the timer hits zero, destroy the bomb and spawn a poison cloud with a timer **DONE**
 * create a function that will calculate the distance between two monsters **DONE**
 * create a function to find the closest monster **DONE**
-* update Magenta enemy ai so that they target the player and throw a bomb. This may be a second ai that the enemy can switch to after a certain amount of time. The player must be suitably close to the monster. The monster will target a random open tile next to the player.
+* update Magenta enemy ai so that they target the player and throw a bomb. This may be a second ai that the enemy can switch to after a certain amount of time. The player must be suitably close to the monster. The monster will target a random open tile next to the player. **DONE**
 * update level generation to spawn 1-3 poison clouds in a room (must be next to a wall or have no diagonally adjacent walls; this will help keep us from blocking a doorway) **DONE**
-* create special ability for the player to be able to toss bombs at the nearest enemy as well
+* create special ability for the player to be able to toss bombs at the nearest enemy as well **DONE**
 #### CYAN
 Now, do the same for Cyan. Additionally, add code so that the each level is randomized for the order that floors are visited in and make it so that enemies from previous levels can spawn in on subsequent levels.
 * add wind gust to the sprite sheet (may be multiple angles)
-* add floor spike to the sprite sheet
-* create floor spike as a property of a tile that will damage the player if stepped on
+* add floor spike to the sprite sheet **DONE**
+* create floor spike as a property of a tile that will damage the player if stepped on **DONE**
 * (BONUS) add a timer so that spikes retract on set intervals
-* code the wind gust as a tile effect that moves the monster in a set direction by one space
-* update cyan enemy ai so that they create these wind gusts on the floor to hinder the player.
-* update the level genration to spawn 1-3 spikes in a room, similarly to how poison clouds were created
-* create special ability for the player to be able to create wind gusts as well
-* update level generation so that level are bulilt in a randomized order
-* adjust code so that enemies from previous levels can spawn into the new
+* code the wind gust as a tile effect that moves the monster in a set direction by one space **DONE**
+* update cyan enemy ai so that they create these wind gusts on the floor to hinder the player. **DONE**
+* update the level genration to spawn 1-3 spikes in a room, similarly to how poison clouds were created **DONE**
+* create special ability for the player to be able to create wind gusts as well **DONE**
+* update level generation so that level are bulilt in a randomized order **DONE**
+* adjust code so that enemies from previous levels can spawn into the new **DONE**
 #### YELLOW
 Now, do the same for Yellow.
 * add horizontal and vertical zaps to the sprite sheet

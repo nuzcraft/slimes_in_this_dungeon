@@ -1,4 +1,12 @@
 ## Changelog
+### 2020.03.04 Day 5!
+* 1:37 PM, HOLY CANOLI DAY 5 ALREADY. Also, I've not been able to do ANY work on this today (besides write this note). My fingers are crossed that I'll get time tonight... I'm definitely glad that I structured my project plan so that I could piecemeal this out...I'll be lucky to finish the cyan and yellow levels by the end at this rate (which was my minimum viable product!!)
+* In my mind, cyan and yellow should be quicker, but I could run into issues.
+* 9 PM, once again, lots of chores. But, I've got an IPA and am ready to rock!
+* Fuck, that felt like a struggle. For now, the Magenta level is complete!!
+* Okay, I doubled down, spent a little extra time, and got the Cyan level finished! I'm not super stoked about how the wind gusts work, but I might have time to fix them later (it might be easy if they just push the monster or player to their previous position, AKA a wall with a tick). Tomorrow is Yellow day + the start of polish.
+* NOTE: there is a bug where things like poison clouds and bombs can delete crystals and exits, which is bad and should be fixed.
+* Total Dev Time - 2 hrs
 ### 2020.03.03 Day 4!
 * 6:30, got to work early again!
 * made some progress getting poison clouds working...I may make them their own tile similar to crystals, not sure tho

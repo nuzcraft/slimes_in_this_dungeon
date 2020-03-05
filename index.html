@@ -51,7 +51,11 @@
             if(e.key=="w") player.tryMove(0, -1);
 			if(e.key=="s") player.tryMove(0, 1);
 			if(e.key=="a") player.tryMove(-1, 0);
-			if(e.key=="d") player.tryMove(1, 0); 
+            if(e.key=="d") player.tryMove(1, 0); 
+            
+            // special abilities
+            if(e.key==1) player.throwPoisonBomb();
+            if(e.key==2) player.throwWindGust();
         }
     }
 

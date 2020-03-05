@@ -87,6 +87,24 @@ class Monster{
         this.tile.monster = null;
         this.sprite = spr_empty;
     }
+
+    throwPoisonBomb(other){
+        // get a random tile next to the player
+        let targetTile = other.tile.getAdjacentPassableNeighborWithoutMonsters()[0];
+        let bomb = new PoisonBomb(targetTile);
+        bomb.offsetX = this.tile.x - targetTile.x;
+        bomb.offsetY = this.tile.y - targetTile.y;
+        monsters.push(bomb);
+    }
+
+    throwWindGust(other){
+        // get a random tile next to the player
+        let targetTile = other.tile.getAdjacentPassableNeighborWithoutMonsters()[0];
+        let gust = new WindGustMon(targetTile);
+        gust.offsetX = this.tile.x - targetTile.x;
+        gust.offsetY = this.tile.y - targetTile.y;
+        monsters.push(gust);
+    }
 }
 
 class Player extends Monster{
@@ -98,10 +116,36 @@ class Player extends Monster{
         this.hasMagenta = false;
         this.hasCyan = false;
         this.hasYellow = false;
+        this.poisonBombCooldown = 0;
+        this.windGustCooldown = 0;
     }
 
     tryMove(dx, dy){
         if(super.tryMove(dx, dy)){
+            tick();
+        }
+        if (this.poisonBombCooldown > 0){
+            this.poisonBombCooldown--;
+        }
+        if (this.windGustCooldown > 0){
+            this.windGustCooldown--;
+        }
+    }
+
+    throwPoisonBomb(){
+        if (this.hasMagenta && this.poisonBombCooldown == 0){
+            let monster = getClosestMonster();
+            super.throwPoisonBomb(monster);
+            this.poisonBombCooldown = 5;
+            tick();
+        }
+    }
+
+    throwWindGust(){
+        if (this.hasCyan && this.windGustCooldown == 0){
+            let monster = getClosestMonster();
+            super.throwWindGust(monster);
+            this.windGustCooldown = 5;
             tick();
         }
     }
@@ -117,13 +161,65 @@ class Slime extends Monster{
     constructor(tile){
         super(tile, spr_slime);
     }
+}
 
-    throwPoisonBomb(){
-        let targetTile = player.tile.getAdjacentPassableNeighbor()[0];
-        let bomb = new PoisonBomb(targetTile);
-        bomb.offsetX = this.tile.x - targetTile.x;
-        bomb.offsetY = this.tile.y - targetTile.y;
-        monsters.push(bomb);
+class MagentaSlime extends Monster{
+    constructor(tile){
+        super(tile, spr_magenta_slime);
+        // give the slime an ability timer between 3 and 5 turns
+        this.ability_timer = randomRange(4, 7);
+    }
+
+    tryMove(dx, dy){
+        if(this.tile.dist(player.tile) < 4 && this.ability_timer == 0){
+            this.throwPoisonBomb(player);
+            this.ability_timer = randomRange(4, 7);
+        } else {
+            if (this.ability_timer > 0) {
+                this.ability_timer--;
+            }
+            super.tryMove(dx, dy);
+        }
+    }
+}
+
+class CyanSlime extends Monster{
+    constructor(tile){
+        super(tile, spr_cyan_slime);
+        // give the slime an ability timer between 3 and 5 turns
+        this.ability_timer = randomRange(4, 7);
+    }
+
+    tryMove(dx, dy){
+        if(this.tile.dist(player.tile) < 6 && this.ability_timer == 0){
+            this.throwWindGust(player);
+            this.ability_timer = randomRange(4, 7);
+        } else {
+            if (this.ability_timer > 0) {
+                this.ability_timer--;
+            }
+            super.tryMove(dx, dy);
+        }
+    }
+}
+
+class YellowSlime extends Monster{
+    constructor(tile){
+        super(tile, spr_yellow_slime);
+        // give the slime an ability timer between 3 and 5 turns
+        this.ability_timer = randomRange(4, 7);
+    }
+
+    tryMove(dx, dy){
+        if(this.tile.dist(player.tile) < 4 && this.ability_timer == 0){
+            // this.throwPoisonBomb(player);
+            this.ability_timer = randomRange(4, 7);
+        } else {
+            if (this.ability_timer > 0) {
+                this.ability_timer--;
+            }
+            super.tryMove(dx, dy);
+        }
     }
 }
 
@@ -146,5 +242,27 @@ class PoisonBomb extends Monster{
         this.sprite = spr_poison_cloud;
         tiles[this.tile.x][this.tile.y] = new PoisonCloud(this.tile.x, this.tile.y, 3);
         tiles[this.tile.x][this.tile.y].fromBomb = true;
+    }
+}
+
+class WindGustMon extends Monster{
+    constructor(tile){
+        super(tile, spr_wind_gust);
+        this.timer = 1;
+        // this.die();
+    }
+
+    tryMove(dx, dy){
+        // does not move
+    }
+
+    timesUp(){
+        this.die();
+    }
+
+    die(){
+        super.die();
+        this.sprite = spr_wind_gust;
+        tiles[this.tile.x][this.tile.y] = new WindGust(this.tile.x, this.tile.y, 4);
     }
 }

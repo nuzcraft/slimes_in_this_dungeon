@@ -27,6 +27,10 @@ class Tile{
         return this.getAdjacentNeighbors().filter(t => t.passable);
     }
 
+    getAdjacentPassableNeighborWithoutMonsters(){
+        return this.getAdjacentNeighbors().filter(t => t.passable).filter(u => !u.monster);
+    }
+
     // manhattan distance
     dist(other){
         return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
@@ -208,6 +212,54 @@ class PoisonCloud extends Floor {
         if (!this.fromBomb){
             let tile = randomPassableTile();
             tiles[tile.x][tile.y] = new PoisonCloud(tile.x, tile.y, randomRange(5, 10));
+        }
+    }
+}
+
+class WindGust extends Floor{
+    constructor(x, y, timer=null){
+        super(x, y);
+        this.sprite = spr_wind_gust;
+        this.timer = timer;
+    }
+
+    stepOn(monster){
+        let targetTile = shuffle(monster.tile.getAdjacentPassableNeighbor())[0];
+        monster.tryMove(targetTile.x - monster.tile.x, targetTile.y - monster.tile.y);
+    }
+
+    timesUp(){
+        // destroy this poison cloud
+        this.replace(Floor);
+    }
+}
+
+class Spikes extends Floor {
+    constructor(x, y, timer=null){
+        super(x, y);
+        this.sprite = spr_spikes;
+        this.timer = timer;
+        this.retracted = false;
+        this.resetTimer = timer;
+    }
+
+    stepOn(monster){
+        if (!this.retracted){
+            monster.hit();
+        }
+    }
+
+    timesUp(){
+        // if we use a time, use the timer to retract and extend
+        // the spikes
+        if (this.retracted){
+            this.retracted = false;
+            this.sprite = spr_spikes;
+            this.timer = this.resetTimer;
+        } else {
+            this.retracted = true;
+            this.sprite = spr_floor;
+            this.timer = this.resetTimer;
         }
     }
 }
