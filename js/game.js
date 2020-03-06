@@ -69,8 +69,9 @@ function drawText(text, size, centered, textX, textY, color){
 
 function showTitle(){
     // console.log("show title started");
-    ctx.fillStyle = 'rgba(0, 0, 0, .85)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(title, 0, 0);
+    ctx.fillStyle = 'rgba(0, 0, 0, .75)';
+    ctx.fillRect(canvas.width / 3.5, canvas.height / 7, canvas.width / 2.33, canvas.height / 2.5);
     gameState = "title";
     drawText("There are", 40, true, 0, canvas.height / 2 - 170, color_white);
     drawText("SLIMES", 70, true, 0, canvas.height / 2 - 110, color_cyan);
@@ -87,6 +88,15 @@ function startGame(){
     collected_crystals = [];
     startLevel();
     gameState = "running";
+
+    if (background_audio == 0){
+        let background = new Audio('sounds/Lately_Kind_of_Yeah_-_04_-_Exit_Only.mp3');
+        background.currentTime = 0;
+        background.play();
+        background.loop = true;
+        background.volume = .5;
+        background_audio = 1;
+    }
 }
 
 function startLevel(){
@@ -188,6 +198,17 @@ function draw() {
             drawSprite(spr_empty_crystal, 4, 9);
         }
 
+        // draw the instructions there at the bottom
+        drawText("Use the W,A,S,D keys to move around.", 25, false, 4*64, 10*64+16, color_white);
+        drawText("Use the number keys to use abilities.", 25, false, 4*64, 10*64+48, color_white);
+        drawText("Collect the CRYSTALS", 18, false, 10*64+16, 9*64+28, color_white);
+        drawText("and", 18, false, 11*64-16+8, 9*64+48, color_white);
+        drawText("ESCAPE", 18, false, 11*64+16+8, 9*64+48, color_magenta);
+        drawText("the", 18, false, 11*64-24+8, 10*64+4, color_white);
+        drawText("DUNGEON", 18, false, 11*64+8, 10*64+4, color_cyan);
+        drawText("of", 18, false, 11*64-8+8, 10*64+16+8, color_white);
+        drawText("SLIMES", 18, false, 11*64+12+8, 10*64+16+8, color_yellow);
+        // drawText("of !")
     }
 }
 
@@ -284,4 +305,23 @@ function boltTravel(direction, effect, start_tile){
             break;
         }
     }
+}
+
+function initSounds(){
+    sounds = {
+        hit_player: new Audio('sounds/player_hit.wav'),
+        hit_slime: new Audio('sounds/slime_hit.wav'),
+        cast_tornado: new Audio('sounds/cast_tornado.wav'),
+        collect_gem: new Audio('sounds/collect_gem.wav'),
+        eh_something: new Audio('sounds/eh something.wav'),
+        explosion: new Audio('sounds/explosion.wav'),
+        lightning: new Audio('sounds/lightning.wav'),
+        new_level: new Audio('sounds/new_level.wav'),
+    };
+}
+
+function playSound(soundName){
+    sounds[soundName].currentTime = 0;
+    sounds[soundName].volume = .75;
+    sounds[soundName].play();
 }

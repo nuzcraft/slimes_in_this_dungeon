@@ -96,6 +96,7 @@ class Exit extends Tile{
             } else {
                 level ++;
                 startLevel();
+                playSound("new_level");
             }
         }
     }
@@ -114,6 +115,7 @@ class MagentaExit extends Tile{
             } else {
                 level ++;
                 startLevel();
+                playSound("new_level");
             }
         }
     }
@@ -132,6 +134,7 @@ class CyanExit extends Tile{
             } else {
                 level ++;
                 startLevel();
+                playSound("new_level");
             }
         }
     }
@@ -150,6 +153,7 @@ class YellowExit extends Tile{
             } else {
                 level ++;
                 startLevel();
+                playSound("new_level");
             }
         }
     }
@@ -171,6 +175,7 @@ class MagentaCrystal extends Tile {
             // add the crystal to the player
             monster.hasMagenta = true;
             collected_crystals.push("magenta");
+            playSound("collect_gem");
         }
     }
 }
@@ -191,6 +196,7 @@ class CyanCrystal extends Tile {
             // add the crystal to the player
             monster.hasCyan = true;
             collected_crystals.push("cyan");
+            playSound("collect_gem");
         }
     }
 }
@@ -211,6 +217,7 @@ class YellowCrystal extends Tile {
             // add the crystal to the player
             monster.hasYellow = true;
             collected_crystals.push("yellow");
+            playSound("collect_gem");
         }
     }
 }
@@ -242,6 +249,7 @@ class WindGust extends Wall{
         super(x, y);
         this.sprite = spr_wind_gust;
         this.timer = timer;
+        playSound("cast_tornado");
     }
 
     timesUp(){

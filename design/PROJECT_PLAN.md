@@ -113,7 +113,7 @@ If everything above has been completed, we can consider the jam a success. Every
 #### Sprite Updates
 Make changes to sprites to make them look nicer or mesh better. This can include creating and adding in new sprites.
 #### Sound Effects and Music
-Add sound effects for attacks, special abilities, movement etc. as well as a background track.
+Add sound effects for attacks, special abilities, movement etc. as well as a background track. **DONE**
 #### RED
 Create the Red level and integrate it into the game
 #### BLUE
@@ -129,6 +129,6 @@ Give the player and slimes little two-frame animations and maybe attack animatio
 #### Game Over Screen
 Create it / make it better
 #### Instructions Page
-Create an instructions page for people to reference
+Create an instructions page for people to reference **DONE**
 #### Story?
 Give the game a bit of story? probably just when the game begins and ends

@@ -33,6 +33,9 @@
     spritesheet.src = 'spritesheet.png';
     spritesheet.onload = showTitle;
 
+    title = new Image();
+    title.src = 'title.png';
+
     gamestate = "loading";
 
     shakeAmount = 0;
@@ -41,6 +44,8 @@
 
     level = 1;
     numLevels = 4;
+
+    background_audio = 0;
 
     document.querySelector("html").onkeypress = function(e) {
         if (gameState == "title"){
@@ -52,6 +57,7 @@
 			if(e.key=="s") player.tryMove(0, 1);
 			if(e.key=="a") player.tryMove(-1, 0);
             if(e.key=="d") player.tryMove(1, 0); 
+            if(e.key==" ") tick();
             
             // special abilities
             if(e.key==1) player.throwPoisonBomb();
@@ -63,5 +69,7 @@
     setInterval(draw, 15);
 
     setupCanvas();
+
+    initSounds();
 
 </script>

@@ -80,6 +80,12 @@ class Monster{
             return;
         }
         this.die();
+
+        if(this.isPlayer){
+            playSound("hit_player");
+        } else {
+            playSound("hit_slime");
+        }
     }
     
     die(){
@@ -117,6 +123,7 @@ class Monster{
         for (let k=0; k < directions.length; k++){
             boltTravel(directions[k], spr_lightning, this.tile);
         }
+        playSound("lightning");
     }
 }
 
@@ -282,6 +289,7 @@ class PoisonBomb extends Monster{
         this.sprite = spr_poison_cloud;
         tiles[this.tile.x][this.tile.y] = new PoisonCloud(this.tile.x, this.tile.y, 3);
         tiles[this.tile.x][this.tile.y].fromBomb = true;
+        playSound("explosion");
     }
 }
 

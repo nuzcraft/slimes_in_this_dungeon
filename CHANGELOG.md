@@ -1,4 +1,8 @@
 ## Changelog
+### 2020.03.06 Day 7, the final day!
+* 11:30 AM, lets' work on a title screen!
+* So, I made some really bad art that looks okay for a title screen.
+* 1 hr
 ### 2020.03.05 Day 6!
 * 6:50 AM, I've got 10 mins till work starts. I'm gonna try to switch the wind gusts to act more like walls, and allow the player to place them around them instead of firing them at enemies.
 * Okay, I'm much happier with this setup, it feels less like a cop out and a copy of throwing poison bombs.
@@ -7,6 +11,11 @@
 * Hurrah!! We are functionally done!! I've hit everything in my main project plan! Now, it's time to plan some stretch goals :D. 
 * Hello v1.0!!
 * 1 hr
+* 8:45, alright, time to polish some stuff up!
+* I got some sounds and music mixed up. Background effects from https://www.bfxr.net/ and a background song from https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Decoder_Magazine/Lately_Kind_of_Yeah/Summit/Lately_Kind_of_Yeah_-_04_-_Exit_Only.mp3
+* Exit Only by Lately Kind of Yeah
+* I added some text to the bottom of the screen giving some really basic instructions. I also had to add a secret command...space bar to cause the game to tick. This makes it WAY easier to win, and I don't like it. It's basically just there in case you get stuck in a corner.
+* Tomorrow, I'm going to update the title screen and add a game over screen, and we'll probably call it done!
 ### 2020.03.04 Day 5!
 * 1:37 PM, HOLY CANOLI DAY 5 ALREADY. Also, I've not been able to do ANY work on this today (besides write this note). My fingers are crossed that I'll get time tonight... I'm definitely glad that I structured my project plan so that I could piecemeal this out...I'll be lucky to finish the cyan and yellow levels by the end at this rate (which was my minimum viable product!!)
 * In my mind, cyan and yellow should be quicker, but I could run into issues.
