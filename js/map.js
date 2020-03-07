@@ -222,7 +222,7 @@ function generateCrystal(color){
 }
 
 function generateTraps(){
-    for (let i = 0; i < rooms.length; i++){
+    for (let i = 1; i < rooms.length; i++){
         if (level_color == 'magenta' || level_color === undefined){
             let numPoisonClouds = randomRange(0, 2);
             for (let j = 0; j < numPoisonClouds; j++){
