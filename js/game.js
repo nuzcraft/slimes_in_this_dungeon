@@ -97,7 +97,7 @@ function showWinScreen(){
 
 function startGame(){
     console.log("Starting game.");
-    level = 4;
+    level = 1;
     level_colors = ['magenta', 'cyan', 'yellow']
     collected_crystals = [];
     startLevel();
