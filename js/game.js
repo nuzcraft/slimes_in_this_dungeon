@@ -81,9 +81,23 @@ function showTitle(){
     drawText("Press any key to start", 20, true, 0, canvas.height / 2 - 35, color_yellow);
 }
 
+function showGameOver(){
+    ctx.fillStyle = 'rgba(0, 0, 0, .75)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(gameover, 0, 0);
+    gameState = 'gameover';
+}
+
+function showWinScreen(){
+    ctx.fillStyle = 'rgba(0, 0, 0, .75)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(win, 0, 0);
+    gameState = 'win';
+}
+
 function startGame(){
     console.log("Starting game.");
-    level = 1;
+    level = 4;
     level_colors = ['magenta', 'cyan', 'yellow']
     collected_crystals = [];
     startLevel();

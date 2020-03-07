@@ -29,12 +29,18 @@
     numTiles_y = 9;
     uiHeight = 2; // num of tiles high the ui will be at the bottom of the screen
 
+    title = new Image();
+    title.src = 'title.png';
+
+    gameover = new Image();
+    gameover.src = 'gameover.png';
+
+    win = new Image();
+    win.src = 'win.png';
+
     spritesheet = new Image();
     spritesheet.src = 'spritesheet.png';
     spritesheet.onload = showTitle;
-
-    title = new Image();
-    title.src = 'title.png';
 
     gamestate = "loading";
 
@@ -51,6 +57,8 @@
         if (gameState == "title"){
             startGame();
         } else if (gameState == "dead"){
+            showGameOver();
+        } else if (gameState == "gameover" || gameState == "win"){
             showTitle();
         } else if (gameState == "running"){
             if(e.key=="w") player.tryMove(0, -1);

@@ -123,11 +123,11 @@ Create the green level and integrate it into the game
 #### Advanced AI
 Give the slimes a bit more advanced AI. A* pathfinding is a good start.
 #### Title Screen
-Give the title screen a nice background and spruce it up a little bit
+Give the title screen a nice background and spruce it up a little bit **DONE**
 #### Animations
 Give the player and slimes little two-frame animations and maybe attack animations.
 #### Game Over Screen
-Create it / make it better
+Create it / make it better **DONE**
 #### Instructions Page
 Create an instructions page for people to reference **DONE**
 #### Story?

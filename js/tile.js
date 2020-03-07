@@ -92,7 +92,8 @@ class Exit extends Tile{
     stepOn(monster){
         if(monster.isPlayer){
             if(level == numLevels){
-                showTitle();
+                showWinScreen();
+                // showTitle();
             } else {
                 level ++;
                 startLevel();
@@ -111,7 +112,8 @@ class MagentaExit extends Tile{
     stepOn(monster){
         if(monster.isPlayer){
             if(level == numLevels){
-                showTitle();
+                showWinScreen();
+                // showTitle();
             } else {
                 level ++;
                 startLevel();
@@ -130,7 +132,8 @@ class CyanExit extends Tile{
     stepOn(monster){
         if(monster.isPlayer){
             if(level == numLevels){
-                showTitle();
+                showWinScreen();
+                // showTitle();
             } else {
                 level ++;
                 startLevel();
@@ -149,7 +152,8 @@ class YellowExit extends Tile{
     stepOn(monster){
         if(monster.isPlayer){
             if(level == numLevels){
-                showTitle();
+                showWinScreen();
+                // showTitle();
             } else {
                 level ++;
                 startLevel();

@@ -1,8 +1,12 @@
 ## Changelog
 ### 2020.03.06 Day 7, the final day!
 * 11:30 AM, lets' work on a title screen!
-* So, I made some really bad art that looks okay for a title screen.
+* So, I made some really bad art that I really like for for a title screen.
 * 1 hr
+* 8:OO PM...Ha! one of the first nights that I get to start early and I'm pretty much done! Gonna work on the game over and win screens, then a short writeup for the readme.
+* Alright! I made super basic 'you died' and 'thanks for playing' screens to show at the end.
+* 1 hr
+* Total Dev Time = 2 hrs
 ### 2020.03.05 Day 6!
 * 6:50 AM, I've got 10 mins till work starts. I'm gonna try to switch the wind gusts to act more like walls, and allow the player to place them around them instead of firing them at enemies.
 * Okay, I'm much happier with this setup, it feels less like a cop out and a copy of throwing poison bombs.
@@ -16,6 +20,8 @@
 * Exit Only by Lately Kind of Yeah
 * I added some text to the bottom of the screen giving some really basic instructions. I also had to add a secret command...space bar to cause the game to tick. This makes it WAY easier to win, and I don't like it. It's basically just there in case you get stuck in a corner.
 * Tomorrow, I'm going to update the title screen and add a game over screen, and we'll probably call it done!
+* 2.25 hrs
+* Total Dev Time: 3.5 hrs
 ### 2020.03.04 Day 5!
 * 1:37 PM, HOLY CANOLI DAY 5 ALREADY. Also, I've not been able to do ANY work on this today (besides write this note). My fingers are crossed that I'll get time tonight... I'm definitely glad that I structured my project plan so that I could piecemeal this out...I'll be lucky to finish the cyan and yellow levels by the end at this rate (which was my minimum viable product!!)
 * In my mind, cyan and yellow should be quicker, but I could run into issues.
