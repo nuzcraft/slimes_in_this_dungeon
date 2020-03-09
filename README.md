@@ -4,7 +4,8 @@ Result: SUCCESS!
 
 ## Controls
 W, A, S, D Keys to Move  
-Number Keys to use special abilities (when unlocked)  
+Number Keys to use special abilities (when unlocked)   
+Spacebar to pass your turn  
 Collect the Crystals to Escape!
 
 ## Credits
